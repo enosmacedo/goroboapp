@@ -1,0 +1,168 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+MERGED from [android.arch.navigation:navigation-ui:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-ui-1.0.0-alpha07.aar\5b8b5ee704208b58c0e744bd5120d7e7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\8006af74a5b42d7f7ca1cd666dbb019f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-alpha2] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\constraint-layout-2.0.0-alpha2.aar\bda04e365f30d2f51a537617f3ca9ef3\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\979db6aaf7b1c534cc57da7984c7ae8d\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.navigation:navigation-fragment:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-fragment-1.0.0-alpha07.aar\e6c0b198f2dfef1ca0ff3e8c55f5d663\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e95b8cc6bc8a6f312f1d81769c0bd772\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2c556fad2d641b328803f16e4acb3c38\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.navigation:navigation-runtime:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-runtime-1.0.0-alpha07.aar\8f0407786013ae2e1472d7469c14e849\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\1b036a75d73594fbcd58958edae3e26d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\bedbdb381ae090449d8114e2c12f74e8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\ae2ad5bc12cf512968439ec5d8b489a4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\506131e94786e6e28b90af3dc379758f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\57cb1f748ec9bd71925e69f116c3e635\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\c6ad8b2ac063f9f192aea3e60aff5164\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.navigation:navigation-common:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-common-1.0.0-alpha07.aar\fe59a2afcbe6655a009e32314b1a8d7b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\af2556fff9917c69c27f99c6b9062953\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\770b46d3b898ca7a5d7df26149830231\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c21e77b8c9b7b86998dd36b2c334990d\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\5670f054583040b0650fd16a0635fae1\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\1e68c4fcf77d8f12db25ae8a84dff97b\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\4120a86f1328aacd129cbbde8f7ce0da\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+	package
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:3:5-46
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:1-40:12
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:5:5-74
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:5:22-71
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.BLUETOOTH
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:7:5-68
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:7:22-65
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:8:22-78
+application
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:10:5-38:19
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-alpha2] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\constraint-layout-2.0.0-alpha2.aar\bda04e365f30d2f51a537617f3ca9ef3\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-alpha2] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\constraint-layout-2.0.0-alpha2.aar\bda04e365f30d2f51a537617f3ca9ef3\AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:15:9-35
+	android:label
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:13:9-41
+	android:roundIcon
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:14:9-45
+	android:icon
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:12:9-40
+	android:allowBackup
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:11:9-35
+	android:theme
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:16:9-40
+activity#br.escolaprogramacao.robotmaker.EditNodeArrowDialog
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:17:9-66
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:17:19-54
+activity#br.escolaprogramacao.robotmaker.Kit1Activity
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:18:9-21:59
+	android:label
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:20:13-56
+	android:theme
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:21:13-56
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:19:13-41
+activity#br.escolaprogramacao.robotmaker.MainActivity
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:22:9-31:20
+	android:label
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:24:13-45
+	android:theme
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:25:13-56
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:23:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:26:13-30:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:27:17-69
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:27:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:29:17-77
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:29:27-74
+activity#br.escolaprogramacao.robotmaker.bluetooth.PairedDevices
+ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:34:9-37:20
+	android:label
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:36:13-43
+	android:name
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml:35:13-52
+uses-sdk
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+MERGED from [android.arch.navigation:navigation-ui:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-ui-1.0.0-alpha07.aar\5b8b5ee704208b58c0e744bd5120d7e7\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-ui:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-ui-1.0.0-alpha07.aar\5b8b5ee704208b58c0e744bd5120d7e7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\8006af74a5b42d7f7ca1cd666dbb019f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\8006af74a5b42d7f7ca1cd666dbb019f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-alpha2] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\constraint-layout-2.0.0-alpha2.aar\bda04e365f30d2f51a537617f3ca9ef3\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:2.0.0-alpha2] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\constraint-layout-2.0.0-alpha2.aar\bda04e365f30d2f51a537617f3ca9ef3\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\979db6aaf7b1c534cc57da7984c7ae8d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\979db6aaf7b1c534cc57da7984c7ae8d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-fragment:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-fragment-1.0.0-alpha07.aar\e6c0b198f2dfef1ca0ff3e8c55f5d663\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-fragment:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-fragment-1.0.0-alpha07.aar\e6c0b198f2dfef1ca0ff3e8c55f5d663\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e95b8cc6bc8a6f312f1d81769c0bd772\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e95b8cc6bc8a6f312f1d81769c0bd772\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2c556fad2d641b328803f16e4acb3c38\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\2c556fad2d641b328803f16e4acb3c38\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-runtime:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-runtime-1.0.0-alpha07.aar\8f0407786013ae2e1472d7469c14e849\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-runtime:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-runtime-1.0.0-alpha07.aar\8f0407786013ae2e1472d7469c14e849\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\1b036a75d73594fbcd58958edae3e26d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\1b036a75d73594fbcd58958edae3e26d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\bedbdb381ae090449d8114e2c12f74e8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\bedbdb381ae090449d8114e2c12f74e8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\ae2ad5bc12cf512968439ec5d8b489a4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\ae2ad5bc12cf512968439ec5d8b489a4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\506131e94786e6e28b90af3dc379758f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\506131e94786e6e28b90af3dc379758f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\57cb1f748ec9bd71925e69f116c3e635\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\57cb1f748ec9bd71925e69f116c3e635\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\c6ad8b2ac063f9f192aea3e60aff5164\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\c6ad8b2ac063f9f192aea3e60aff5164\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-common:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-common-1.0.0-alpha07.aar\fe59a2afcbe6655a009e32314b1a8d7b\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-common:1.0.0-alpha07] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\navigation-common-1.0.0-alpha07.aar\fe59a2afcbe6655a009e32314b1a8d7b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\af2556fff9917c69c27f99c6b9062953\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\af2556fff9917c69c27f99c6b9062953\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\770b46d3b898ca7a5d7df26149830231\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\770b46d3b898ca7a5d7df26149830231\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c21e77b8c9b7b86998dd36b2c334990d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c21e77b8c9b7b86998dd36b2c334990d\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\5670f054583040b0650fd16a0635fae1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\5670f054583040b0650fd16a0635fae1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\1e68c4fcf77d8f12db25ae8a84dff97b\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\1e68c4fcf77d8f12db25ae8a84dff97b\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\4120a86f1328aacd129cbbde8f7ce0da\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\daniel\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\4120a86f1328aacd129cbbde8f7ce0da\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\daniel\Desktop\EscolaProgramcao\RobotMaker\app\src\main\AndroidManifest.xml

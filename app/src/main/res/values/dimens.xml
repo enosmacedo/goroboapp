@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="standard_55">55dp</dimen>
+    <dimen name="standard_105">105dp</dimen>
+    <dimen name="standard_155">155dp</dimen>
+    <dimen name="standard_205">205dp</dimen>
+    <dimen name="standard_255">255dp</dimen>
+    <dimen name="standard_primeiro">65dp</dimen>
+    <dimen name="standard_segundo">125dp</dimen>
+    <dimen name="standard_terceiro">185dp</dimen>
+    <dimen name="standard_quarto">245dp</dimen>
+    <dimen name="standard_quinto">305dp</dimen>
+    <dimen name="standard_sexto">365dp</dimen>
+    <dimen name="standard_setimo">425dp</dimen>
+    <dimen name="standard_oitavo">485dp</dimen>
+</resources>

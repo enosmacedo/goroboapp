@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Go Robo!</string>
+    <string name="am_menun_main_settings">Configuração</string>
+    <string name="title_activity_kit1">kit1</string>
+    <string name="am_menun_main_save_project">Salvar Projeto</string>
+    <string name="am_menun_main_load_project">Carregar Projeto</string>
+    <string name="am_menun_main_reset_project">Reniciar Projeto</string>
+    <string name="am_menun_main_run_project">Executar</string>
+    <string name="am_menun_main_debug_project">Depurar</string>
+    <string name="am_menun_main_bluetooth">Conectar Bluetooth</string>
+</resources>

@@ -1,0 +1,54 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.escolaprogramacao.robotmaker.MainActivity">
+
+    <item
+        android:id="@+id/am_menu_main_settings"
+        android:orderInCategory="100"
+        android:title="@string/am_menun_main_settings"
+        app:showAsAction="never" />
+
+  <item
+        android:id="@+id/am_menu_main_save_project"
+        android:orderInCategory="100"
+        android:title="@string/am_menun_main_save_project"
+        app:showAsAction="never" />
+
+
+  <item
+        android:id="@+id/am_menu_main_load_project"
+        android:orderInCategory="100"
+        android:title="@string/am_menun_main_load_project"
+        app:showAsAction="never" />
+
+
+  <item
+        android:id="@+id/am_menu_main_reset_project"
+        android:orderInCategory="100"
+        android:title="@string/am_menun_main_reset_project"
+        app:showAsAction="never" />
+
+
+  <item
+        android:id="@+id/am_menu_main_run_project"
+        android:orderInCategory="100"
+        android:title="@string/am_menun_main_run_project"
+        app:showAsAction="never" />
+
+
+  <item
+        android:id="@+id/am_menu_main_debug_project"
+        android:orderInCategory="100"
+        android:title="@string/am_menun_main_debug_project"
+        app:showAsAction="never" />
+
+  <item
+        android:id="@+id/am_menu_main_bluetooth"
+        android:orderInCategory="100"
+        android:title="@string/am_menun_main_bluetooth"
+        app:showAsAction="never" />
+
+
+
+</menu>
