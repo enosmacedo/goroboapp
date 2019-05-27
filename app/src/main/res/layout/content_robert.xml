@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Kit1Activity"
-    tools:showIn="@layout/activity_kit1">
+    tools:context=".RobertActivity"
+    tools:showIn="@layout/activity_robert">
 
     <WebView
-        android:id="@+id/wv_kit1_activity_site"
+        android:id="@+id/wv_robert_activity_site"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginEnd="8dp"

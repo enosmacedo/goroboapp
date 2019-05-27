@@ -8,4 +8,5 @@
     <string name="am_menun_main_run_project">Executar</string>
     <string name="am_menun_main_debug_project">Depurar</string>
     <string name="am_menun_main_bluetooth">Conectar Bluetooth</string>
+    <string name="title_activity_in_hungria">InHungriaActivity</string>
 </resources>

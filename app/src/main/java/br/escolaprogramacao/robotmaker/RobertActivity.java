@@ -1,15 +1,7 @@
 package br.escolaprogramacao.robotmaker;
 
-import android.bluetooth.BluetoothAdapter;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,12 +13,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import br.escolaprogramacao.robotmaker.bluetooth.ConnectionThread;
-import br.escolaprogramacao.robotmaker.bluetooth.PairedDevices;
+import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
 
-import static br.escolaprogramacao.robotmaker.MainActivity.SELECT_PAIRED_DEVICE;
-
-public class Kit1Activity extends AppCompatActivity {
+public class RobertActivity extends AppCompatActivity {
     boolean isFABOpen;
     boolean isFABSecondOpen;
     private FloatingActionButton fab;
@@ -60,17 +49,18 @@ public class Kit1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kit1);
+        setContentView(R.layout.activity_robert);
+
+        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+        } else {
+            RobertActivity.this.finish();
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setTitle("Go Robo!");
-//        toolbar.setTitleTextColor(Color.BLACK);
-//        toolbar.setBackgroundColor(Color.WHITE);
 
-
-
-        webview = (WebView) findViewById(R.id.wv_kit1_activity_site);
+        webview = (WebView) findViewById(R.id.wv_robert_activity_site);
         webview.loadUrl("file:///android_asset/site/index.html");
 
         interface_android_web = new WebAppInterfaceKit1(this, webview);
@@ -91,7 +81,6 @@ public class Kit1Activity extends AppCompatActivity {
 
         fab = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_main);
         fab_second = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_second);
-
         fab_seta_start = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_start);
         fab_seta_finish = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_finish);
         fab_seta_reta = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_seta_reta);
@@ -108,8 +97,8 @@ public class Kit1Activity extends AppCompatActivity {
 
         configurar_float_action_bar ();
 
-        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-        registerReceiver(mReceiver, filter);
+//        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+//        registerReceiver(mReceiver, filter);
 //
 //        mWebView.post(new Runnable() {
 //            @Override
@@ -289,21 +278,21 @@ public class Kit1Activity extends AppCompatActivity {
     }
 
 
-    public static Handler handler_bluetooth = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Bundle bundle = msg.getData();
-            byte[] data = bundle.getByteArray("data");
-            String dataString= new String(data);
-
-            if(dataString.equals("---N"))
-                //Toast.makeText(, "Ocorreu um erro durante a conexão ", Toast.LENGTH_LONG).show();
-                MainActivity.pronto_para_mandar_mensagem = true;
-            else if(dataString.equals("---S"))
-                MainActivity.pronto_para_mandar_mensagem = false;
-            //Toast.makeText(MainActivity.this,"Conectado ", Toast.LENGTH_LONG).show();
-        }
-    };
+//    public static Handler handler_bluetooth = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            Bundle bundle = msg.getData();
+//            byte[] data = bundle.getByteArray("data");
+//            String dataString= new String(data);
+//
+//            if(dataString.equals("---N"))
+//                //Toast.makeText(, "Ocorreu um erro durante a conexão ", Toast.LENGTH_LONG).show();
+//                MainActivity.pronto_para_mandar_mensagem = true;
+//            else if(dataString.equals("---S"))
+//                MainActivity.pronto_para_mandar_mensagem = false;
+//            //Toast.makeText(MainActivity.this,"Conectado ", Toast.LENGTH_LONG).show();
+//        }
+//    };
 
 
     @Override
@@ -324,7 +313,7 @@ public class Kit1Activity extends AppCompatActivity {
         miReset.setEnabled(true);
         miRun.setEnabled(true);
         miDebug.setEnabled(false);
-        miBluetooth.setEnabled(true);
+        miBluetooth.setEnabled(false);
 
         return true;
     }
@@ -355,48 +344,50 @@ public class Kit1Activity extends AppCompatActivity {
             Toast.makeText(this, "Debug", Toast.LENGTH_SHORT).show();
             return true;
         }else if (id == R.id.am_menu_main_bluetooth) {
-            MainActivity.btAdapter = BluetoothAdapter.getDefaultAdapter();
-            if (MainActivity.btAdapter == null) {
-                Toast.makeText(Kit1Activity.this,"Que pena! Hardware Bluetooth não está funcionando ", Toast.LENGTH_SHORT).show();
-            } else {
-                if ( MainActivity.btAdapter.isEnabled()) {
-                    searchPairedDevices(Kit1Activity.this);
-                } else {
-                    MainActivity.btAdapter.enable();
-                }
-            }
+//            MainActivity.btAdapter = BluetoothAdapter.getDefaultAdapter();
+//            if (MainActivity.btAdapter == null) {
+//                Toast.makeText(RobertActivity.this,"Que pena! Hardware Bluetooth não está funcionando ", Toast.LENGTH_SHORT).show();
+//            } else {
+//                if ( MainActivity.btAdapter.isEnabled()) {
+//                    searchPairedDevices(RobertActivity.this);
+//                } else {
+//                    MainActivity.btAdapter.enable();
+//                }
+//            }
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-
-            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
-                final int bluetoothState = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE,
-                        BluetoothAdapter.ERROR);
-                switch (bluetoothState) {
-                    case BluetoothAdapter.STATE_ON:
-                        searchPairedDevices(Kit1Activity.this);
-                        break;
-                }
-            }
-        }
-    };
+//    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            final String action = intent.getAction();
+//
+//            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
+//                final int bluetoothState = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE,
+//                        BluetoothAdapter.ERROR);
+//                switch (bluetoothState) {
+//                    case BluetoothAdapter.STATE_ON:
+//                        searchPairedDevices(RobertActivity.this);
+//                        break;
+//                }
+//            }
+//        }
+//    };
 
     private void run_project() {
         if (webview != null) {
             interface_android_web.form_graph_java();
         } else {
-            Toast.makeText(Kit1Activity.this,"Não é possível executar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RobertActivity.this,"Não é possível executar", Toast.LENGTH_SHORT).show();
         }
+//        BluetoothManager.getBluetoothManager(RobertActivity.this).write("asdas", RobertActivity.this);
+
     }
 
     private void delete_projetct() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Kit1Activity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(RobertActivity.this);
         builder.setCancelable(true);
         builder.setTitle("Deletar projeto");
         builder.setMessage("Deseja realmente deletar");
@@ -418,36 +409,6 @@ public class Kit1Activity extends AppCompatActivity {
     }
 
 
-    public void searchPairedDevices(Context c) {
-        Intent searchPairedDevicesIntent = new Intent(c, PairedDevices.class);
-        startActivityForResult(searchPairedDevicesIntent, SELECT_PAIRED_DEVICE);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == MainActivity.ENABLE_BLUETOOTH) {
-            if(resultCode == RESULT_OK) {
-                Toast.makeText(Kit1Activity.this,"Bluetooth ativado :D", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(Kit1Activity.this,"Bluetooth não ativado ", Toast.LENGTH_SHORT).show();
-            }
-        } else if(requestCode == SELECT_PAIRED_DEVICE || requestCode == MainActivity.SELECT_DISCOVERED_DEVICE) {
-            if(resultCode == RESULT_OK) {
-                Toast.makeText(Kit1Activity.this,"Você selecionou " + data.getStringExtra("btDevName") + "\n"
-                        + data.getStringExtra("btDevAddress"), Toast.LENGTH_LONG).show();
-
-                MainActivity.connect = new ConnectionThread(data.getStringExtra("btDevAddress"));
-                MainActivity.connect.start();
-//                Toast.makeText(Kit1Activity.this,"Conexão Criada ", Toast.LENGTH_LONG).show();
-
-                miRun.setEnabled(true);
-                miDebug.setEnabled(true);
-            }
-            else {
-                Toast.makeText(Kit1Activity.this,"Nenhum dispositivo selecionado :(", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
 
 }

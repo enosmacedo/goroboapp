@@ -14,9 +14,13 @@
         android:roundIcon="@drawable/logo02"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditNodeArrowDialog"></activity>
         <activity
-            android:name=".Kit1Activity"
+            android:name=".InHungriaActivity"
+            android:label="@string/title_activity_in_hungria"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".EditNodeArrowDialog" />
+        <activity
+            android:name=".RobertActivity"
             android:label="@string/title_activity_kit1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -28,12 +32,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-
-        <activity
-            android:name=".bluetooth.PairedDevices"
-            android:label="Paired Devices" >
         </activity>
     </application>
 

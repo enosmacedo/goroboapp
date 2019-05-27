@@ -1,4 +1,0 @@
-#Thu Jan 31 01:04:06 BRST 2019
-base.0=C\:\\Users\\daniel\\Desktop\\EscolaProgramcao\\RobotMaker\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\8
-path.0=classes.dex
-renamed.0=classes.dex

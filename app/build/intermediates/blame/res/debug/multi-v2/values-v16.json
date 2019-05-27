@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\daniel\\Desktop\\EscolaProgramcao\\RobotMaker\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "C:\\Users\\daniel\\AndroidStudioProjects\\goroboapp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\979db6aaf7b1c534cc57da7984c7ae8d\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-2\\files-2.1\\a2f2ad22a7e7a7826c1ff6384197f5f3\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\770b46d3b898ca7a5d7df26149830231\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-2\\files-2.1\\195200312c54b0ef05c6c6e00d7132ca\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

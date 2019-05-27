@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
 import br.escolaprogramacao.robotmaker.graph.Graph;
 import br.escolaprogramacao.robotmaker.graph.Node;
 import br.escolaprogramacao.robotmaker.graph.Path;
@@ -152,10 +153,10 @@ public class WebAppInterfaceKit1 {
                 }
 
             }
-            MainActivity.connect.sendMessage(res);
+            BluetoothManager.getBluetoothManager(mContext).write(res, mContext);
             return obj;
         } catch (Throwable t) {
-            Toast.makeText(mContext, "Finalmente000: " + data, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Erro: " + data, Toast.LENGTH_SHORT).show();
             Log.e("My App", "Could not parse malformed JSON: \"" + data + "\"");
         }
 
