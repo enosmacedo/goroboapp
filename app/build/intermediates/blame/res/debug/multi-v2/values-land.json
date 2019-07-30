@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\daniel\\AndroidStudioProjects\\goroboapp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-2\\files-2.1\\8791efc482d39ae83867288be2d268bd\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-2\\files-2.1\\eb975e798dd69ddf526439e801ff3d68\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-2\\files-2.1\\a2f2ad22a7e7a7826c1ff6384197f5f3\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-2\\files-2.1\\2d733b02f4da008aade8684ac40dd7a8\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

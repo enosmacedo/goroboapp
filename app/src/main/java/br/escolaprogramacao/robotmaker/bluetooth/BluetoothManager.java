@@ -50,14 +50,12 @@ public  class BluetoothManager {
 
     private BluetoothManager(final Context c) {
         BA = BluetoothAdapter.getDefaultAdapter();
-
-
     }
 
     public void choose_paired_devices (final Context c) {
         final Dialog dialog = new Dialog(c);
         dialog.setContentView(R.layout.layout_dispositivos_pareados_bluetooth);
-        dialog.setTitle("Title...");
+        dialog.setTitle("Gerência de Bluetooth");
         ListView bluetooth_devices = (ListView) dialog.findViewById(R.id.lv_layout_dispositivos_p_b);
 
         pairedDevices = BA.getBondedDevices();
@@ -103,9 +101,8 @@ public  class BluetoothManager {
 
     public static void write(String input, Context c) {
         if (mmOutputStream != null) {
-//            mmOutputStream .write(input, c);
             try {
-                mmOutputStream.write(input.getBytes());                //write bytes over BT connection via outstream
+                mmOutputStream.write(input.getBytes());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -148,64 +145,9 @@ public  class BluetoothManager {
         //creates secure outgoing connecetion with BT device using UUID
     }
 
-
-
-
-
-//
-//    //create new class for connect thread
-//    private class ConnectedThread extends Thread {
-//        private  InputStream mmInStream;
-//        private  OutputStream mmOutStream;
-//
-//        //creation of the connect thread
-//        public ConnectedThread(BluetoothSocket socket) {
-//            try {
-//                mmInStream = socket.getInputStream();
-//                mmOutStream = socket.getOutputStream();
-//            } catch (IOException e) {
-//
-//            }
-//        }
-//
-//        public void run() {
-//            byte[] buffer = new byte[256];
-//            int bytes;
-//
-//            // Keep looping to listen for received messages
-//            while (true) {
-//                try {
-//                    bytes = mmInStream.read(buffer);            //read bytes from input buffer
-//                    String readMessage = new String(buffer, 0, bytes);
-//                    // Send the obtained bytes to the UI Activity via handler
-//                    bluetoothIn.obtainMessa ge(handlerState, bytes, -1, readMessage).sendToTarget();
-//                } catch (IOException e) {
-//                    break;
-//                }
-//            }
-//        }
-//
-//        //write method
-//        private void write(String input, Context c) {
-//            byte[] msgBuffer = input.getBytes();           //converts entered String into bytes
-//            try {
-//                mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
-//            } catch (IOException e) {
-//                //if you cannot write, close the application
-//                Toast.makeText(c, "Connection Failure", Toast.LENGTH_LONG).show();
-//                //finish();
-//
-//            }
-//        }
-//    }
-
-
-    public void closeListenBluetooth() {
+    public static void closeListenBluetooth() {
         stopWorker = true;
     }
-
-
-
 
     public static void beginListenForData(final BluetoothListenInterface func) {
         final Handler handler = new Handler();
@@ -232,7 +174,7 @@ public  class BluetoothManager {
 
                                     handler.post(new Runnable() {
                                         public void run() {
-                                            func.testFunkcija(data);
+                                            func.ouvinte(data);
                                        }
                                     });
                                 }
@@ -251,7 +193,4 @@ public  class BluetoothManager {
 
         workerThread.start();
     }
-
-
-
 }

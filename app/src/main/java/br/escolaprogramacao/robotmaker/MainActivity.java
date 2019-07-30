@@ -22,17 +22,17 @@ public class MainActivity extends AppCompatActivity {
     public static int SELECT_DISCOVERED_DEVICE = 3;
     public static BluetoothAdapter btAdapter;
 
-    MenuItem miSettings ;
-    MenuItem miSave ;
-    MenuItem miLoad ;
-    MenuItem miReset;
-    MenuItem miRun ;
-    MenuItem miDebug ;
-    MenuItem miBluetooth ;
+    private MenuItem miSettings;
+    private MenuItem miSave;
+    private MenuItem miLoad;
+    private MenuItem miReset;
+    private MenuItem miRun;
+    private MenuItem miDebug;
+    private MenuItem miBluetooth;
 
-    ListView lv;
-    Button btn_go_robert;
-    Button btn_in_hungria;
+    private ListView lv;
+    private Button btn_go_robert;
+    private Button btn_in_hungria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
         btn_go_robert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, RobertActivity.class);
+                startActivity(i);
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    Intent i = new Intent(MainActivity.this, RobertActivity.class);
-                    startActivity(i);
                 } else {
                     Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
                 }
@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
         btn_in_hungria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, InHungriaActivity.class);
-                startActivity(i);
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+                    Intent i = new Intent(MainActivity.this, InHungriaActivity.class);
+                    startActivity(i);
                 } else {
                     Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
                 }
@@ -74,24 +74,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        miSettings.setEnabled(false);
-        miSave.setEnabled(false);
-        miLoad.setEnabled(false);
-        miReset.setEnabled(false);
-        miRun.setEnabled(false);
-        miDebug.setEnabled(false);
-        miBluetooth.setEnabled(true);
-
-        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-            miBluetooth.setEnabled(false);
-        } else {
-            miBluetooth.setEnabled(true);
-        }
-
-        return super.onMenuOpened(featureId, menu);
-    }
+//    @Override
+//    public boolean onMenuOpened(int featureId, Menu menu) {
+//        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+//            miBluetooth.setEnabled(false);
+//        } else {
+//            miBluetooth.setEnabled(true);
+//        }
+//
+//        return super.onMenuOpened(featureId, menu);
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -106,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
         miDebug = (MenuItem) menu.findItem(R.id.am_menu_main_debug_project);
         miBluetooth = (MenuItem) menu.findItem(R.id.am_menu_main_bluetooth);
 
+        miSettings.setEnabled(false);
+        miSave.setEnabled(false);
+        miLoad.setEnabled(false);
+        miReset.setEnabled(false);
+        miRun.setEnabled(false);
+        miDebug.setEnabled(false);
+        miBluetooth.setEnabled(true);
+
         miBluetooth.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -115,13 +115,15 @@ public class MainActivity extends AppCompatActivity {
                     MainActivity.this.startActivityForResult(turnOn, 0);
                     Toast.makeText(MainActivity.this, "Autorize o bluetooth e depois selecione essa opção novamente", Toast.LENGTH_LONG).show();
                     return false;
-                }  else if (BluetoothManager.getSocket() == null || BluetoothManager.getSocket().isConnected()) {
+                } else if (BluetoothManager.getSocket() == null || BluetoothManager.getSocket().isConnected()) {
                     BluetoothManager.getBluetoothManager(MainActivity.this).choose_paired_devices(MainActivity.this);
                 } else {
                     Toast.makeText(getBaseContext(), "Dispositivo não suporta o BLuetooth", Toast.LENGTH_SHORT).show();
                 }
                 return true;
-            };
+            }
+
+            ;
         });
         return true;
     }

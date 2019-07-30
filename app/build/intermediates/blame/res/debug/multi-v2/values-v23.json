@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\daniel\\AndroidStudioProjects\\goroboapp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-2\\files-2.1\\a2f2ad22a7e7a7826c1ff6384197f5f3\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\daniel\\.gradle\\caches\\transforms-2\\files-2.1\\2d733b02f4da008aade8684ac40dd7a8\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",

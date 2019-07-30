@@ -1,6 +1,6 @@
 package br.escolaprogramacao.robotmaker.bluetooth;
 
 public interface BluetoothListenInterface {
-    public void testFunkcija(String s);
+    public void ouvinte(String s);
 
 }

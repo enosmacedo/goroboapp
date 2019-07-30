@@ -13,6 +13,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import br.escolaprogramacao.robotmaker.bluetooth.BluetoothListenInterface;
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
 
 public class RobertActivity extends AppCompatActivity {
@@ -33,17 +34,18 @@ public class RobertActivity extends AppCompatActivity {
     private FloatingActionButton fab_seta_reta;
     private FloatingActionButton fab_seta_start;
     private FloatingActionButton fab_seta_finish;
-    public static WebAppInterfaceKit1 interface_android_web;
 
-    MenuItem miSettings;
-    MenuItem miSave ;
-    MenuItem miLoad ;
-    MenuItem miReset;
-    MenuItem miRun ;
-    MenuItem miDebug ;
-    MenuItem miBluetooth ;
-    WebView webview;
+    private WebAppInterfaceKit1 interface_android_web;
+    private RobertBluetoothInterface bluetooth_interface = new RobertBluetoothInterface();
 
+    private MenuItem miSettings;
+    private MenuItem miSave;
+    private MenuItem miLoad;
+    private MenuItem miReset;
+    private MenuItem miRun;
+    private MenuItem miDebug;
+    private MenuItem miBluetooth;
+    private WebView webview;
 
 
     @Override
@@ -51,10 +53,11 @@ public class RobertActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_robert);
 
-        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-        } else {
-            RobertActivity.this.finish();
-        }
+//        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+//        } else {
+//            Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível ficar nesse módulo", Toast.LENGTH_SHORT).show();
+////            RobertActivity.this.finish();
+//        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,22 +65,15 @@ public class RobertActivity extends AppCompatActivity {
 
         webview = (WebView) findViewById(R.id.wv_robert_activity_site);
         webview.loadUrl("file:///android_asset/site/index.html");
-
         interface_android_web = new WebAppInterfaceKit1(this, webview);
 
-//        webview.setVerticalScrollBarEnabled(true);
-//        webview.setHorizontalScrollBarEnabled(true);
-//        webview.setScrollContainer(true);
         WebSettings setting = webview.getSettings();
         setting.setJavaScriptEnabled(true);
-//        setting.setBuiltInZoomControls(true);
-//        setting.setDisplayZoomControls(false);
         setting.setLoadWithOverviewMode(true);
         //setting.setSupportZoom(true);
-//        setting.setUseWideViewPort(true);
+        //setting.setUseWideViewPort(true);
         //setting.setLoadWithOverviewMode(true);
         webview.addJavascriptInterface(interface_android_web, "AndroidInterface");
-
 
         fab = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_main);
         fab_second = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_second);
@@ -95,29 +91,14 @@ public class RobertActivity extends AppCompatActivity {
         fab_settings = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_settings);
         fab_move = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_move);
 
-        configurar_float_action_bar ();
-
-//        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-//        registerReceiver(mReceiver, filter);
-//
-//        mWebView.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                mWebView.loadUrl(...).
-//            }
-//        });
-
-//        crud = new BancoController(getBaseContext());
-//        //crud.insereDado("P1","0013A2004089E0AE","0013A2004089E0AE", TipoPeriferico.IRRIGACAO.getValue());
-//        //crud.insereDado("P2","0013A20040A9CF75","0013A20040A9CF75", TipoPeriferico.SENSORIAMENTO.getValue());
+        configurar_float_action_bar();
     }
 
-    private void configurar_float_action_bar () {
+    private void configurar_float_action_bar() {
         fab_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(300);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -125,7 +106,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(200);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -133,7 +113,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(1);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -141,7 +120,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(2);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -149,7 +127,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(3);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -157,7 +134,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(4);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -166,7 +142,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(5);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -174,7 +149,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(6);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -182,7 +156,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(7);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -190,7 +163,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(101);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -198,7 +170,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(102);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -207,7 +178,6 @@ public class RobertActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 interface_android_web.set_qual_tipo_novo_node_java(103);
-                interface_android_web.update_status_java();
             }
         });
 
@@ -215,9 +185,9 @@ public class RobertActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFABOpen){
+                if (!isFABOpen) {
                     showFABMenu();
-                }else{
+                } else {
                     closeFABMenu();
                 }
             }
@@ -226,17 +196,17 @@ public class RobertActivity extends AppCompatActivity {
         fab_second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFABSecondOpen){
+                if (!isFABSecondOpen) {
                     showFABMenuSecond();
-                }else{
+                } else {
                     closeFABMenuSecond();
                 }
             }
         });
     }
 
-    private void showFABMenu(){
-        isFABOpen=true;
+    private void showFABMenu() {
+        isFABOpen = true;
         fab_arrow_down.animate().translationY(-getResources().getDimension(R.dimen.standard_primeiro));
         fab_arrow_left.animate().translationY(-getResources().getDimension(R.dimen.standard_segundo));
         fab_arrow_right.animate().translationY(-getResources().getDimension(R.dimen.standard_terceiro));
@@ -246,8 +216,8 @@ public class RobertActivity extends AppCompatActivity {
         fab_seta_finish.animate().translationY(-getResources().getDimension(R.dimen.standard_setimo));
     }
 
-    private void closeFABMenu(){
-        isFABOpen=false;
+    private void closeFABMenu() {
+        isFABOpen = false;
         fab_arrow_down.animate().translationY(0);
         fab_arrow_left.animate().translationY(0);
         fab_arrow_right.animate().translationY(0);
@@ -257,8 +227,8 @@ public class RobertActivity extends AppCompatActivity {
         fab_seta_finish.animate().translationY(0);
     }
 
-    private void showFABMenuSecond(){
-        isFABSecondOpen=true;
+    private void showFABMenuSecond() {
+        isFABSecondOpen = true;
         fab_link.animate().translationY(-getResources().getDimension(R.dimen.standard_primeiro));
         fab_seta_reta.animate().translationY(-getResources().getDimension(R.dimen.standard_segundo));
         fab_settings.animate().translationY(-getResources().getDimension(R.dimen.standard_terceiro));
@@ -267,8 +237,8 @@ public class RobertActivity extends AppCompatActivity {
         fab_delete.animate().translationY(-getResources().getDimension(R.dimen.standard_sexto));
     }
 
-    private void closeFABMenuSecond(){
-        isFABSecondOpen=false;
+    private void closeFABMenuSecond() {
+        isFABSecondOpen = false;
         fab_link.animate().translationY(0);
         fab_settings.animate().translationY(0);
         fab_move.animate().translationY(0);
@@ -276,24 +246,6 @@ public class RobertActivity extends AppCompatActivity {
         fab_delete.animate().translationY(0);
         fab_seta_reta.animate().translationY(0);
     }
-
-
-//    public static Handler handler_bluetooth = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            Bundle bundle = msg.getData();
-//            byte[] data = bundle.getByteArray("data");
-//            String dataString= new String(data);
-//
-//            if(dataString.equals("---N"))
-//                //Toast.makeText(, "Ocorreu um erro durante a conexão ", Toast.LENGTH_LONG).show();
-//                MainActivity.pronto_para_mandar_mensagem = true;
-//            else if(dataString.equals("---S"))
-//                MainActivity.pronto_para_mandar_mensagem = false;
-//            //Toast.makeText(MainActivity.this,"Conectado ", Toast.LENGTH_LONG).show();
-//        }
-//    };
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -314,7 +266,6 @@ public class RobertActivity extends AppCompatActivity {
         miRun.setEnabled(true);
         miDebug.setEnabled(false);
         miBluetooth.setEnabled(false);
-
         return true;
     }
 
@@ -328,59 +279,40 @@ public class RobertActivity extends AppCompatActivity {
         if (id == R.id.am_menu_main_settings) {
             //interface_android_web.load_graph_js();
             return true;
-        }else if (id == R.id.am_menu_main_save_project) {
+        } else if (id == R.id.am_menu_main_save_project) {
             Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
             return true;
-        }else if (id == R.id.am_menu_main_load_project) {
+        } else if (id == R.id.am_menu_main_load_project) {
             Toast.makeText(this, "Load", Toast.LENGTH_SHORT).show();
             return true;
-        }else if (id == R.id.am_menu_main_reset_project) {
+        } else if (id == R.id.am_menu_main_reset_project) {
             delete_projetct();
             return true;
-        }else if (id == R.id.am_menu_main_run_project) {
+        } else if (id == R.id.am_menu_main_run_project) {
             run_project();
             return true;
-        }else if (id == R.id.am_menu_main_debug_project) {
+        } else if (id == R.id.am_menu_main_debug_project) {
             Toast.makeText(this, "Debug", Toast.LENGTH_SHORT).show();
             return true;
-        }else if (id == R.id.am_menu_main_bluetooth) {
-//            MainActivity.btAdapter = BluetoothAdapter.getDefaultAdapter();
-//            if (MainActivity.btAdapter == null) {
-//                Toast.makeText(RobertActivity.this,"Que pena! Hardware Bluetooth não está funcionando ", Toast.LENGTH_SHORT).show();
-//            } else {
-//                if ( MainActivity.btAdapter.isEnabled()) {
-//                    searchPairedDevices(RobertActivity.this);
-//                } else {
-//                    MainActivity.btAdapter.enable();
-//                }
-//            }
+        } else if (id == R.id.am_menu_main_bluetooth) {
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-//    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            final String action = intent.getAction();
-//
-//            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
-//                final int bluetoothState = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE,
-//                        BluetoothAdapter.ERROR);
-//                switch (bluetoothState) {
-//                    case BluetoothAdapter.STATE_ON:
-//                        searchPairedDevices(RobertActivity.this);
-//                        break;
-//                }
-//            }
-//        }
-//    };
-
     private void run_project() {
+        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+        } else {
+            Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+            return;
+        }
+        Toast.makeText(RobertActivity.this, "Pronto para começar", Toast.LENGTH_LONG).show();
+        BluetoothManager.beginListenForData(bluetooth_interface);
+
         if (webview != null) {
             interface_android_web.form_graph_java();
         } else {
-            Toast.makeText(RobertActivity.this,"Não é possível executar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RobertActivity.this, "Não é possível executar", Toast.LENGTH_SHORT).show();
         }
 //        BluetoothManager.getBluetoothManager(RobertActivity.this).write("asdas", RobertActivity.this);
 
@@ -409,6 +341,11 @@ public class RobertActivity extends AppCompatActivity {
     }
 
 
-
+    public class RobertBluetoothInterface implements BluetoothListenInterface {
+        @Override
+        public void ouvinte(String s) {
+            Toast.makeText(RobertActivity.this, s, Toast.LENGTH_LONG).show();
+        }
+    }
 
 }

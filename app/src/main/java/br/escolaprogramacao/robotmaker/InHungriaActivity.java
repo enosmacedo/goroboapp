@@ -1,5 +1,6 @@
 package br.escolaprogramacao.robotmaker;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsoluteLayout;
@@ -36,6 +39,16 @@ public class InHungriaActivity extends AppCompatActivity {
     float margem_esquerda = 100;
     public Button teste;
 
+    private MenuItem miSettings ;
+    private MenuItem miSave ;
+    private MenuItem miLoad ;
+    private MenuItem miReset;
+    private MenuItem miRun ;
+    private MenuItem miDebug ;
+    private MenuItem miBluetooth ;
+
+    private HungriaBluetoothInterface bluetooth_interface = new HungriaBluetoothInterface();
+
     private GridView gridView;
     private static final String[] numbers = new String[]{
             "C", "T", "Q", "C", "Q", "C", "Q", "Q",
@@ -51,38 +64,46 @@ public class InHungriaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_hungria);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+//        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+//        } else {
+//            Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível ficar nesse módulo", Toast.LENGTH_SHORT).show();
+//            InHungriaActivity.this.finish();
+//        }
 
         gridView = (GridView) findViewById(R.id.gv_map_hungria_activity);
-
 
         final MapAdapter adapter = new MapAdapter(numbers, this);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-
-                ((MapItemView) v).display();
+                ((MapItemView) v).display(true);
             }
         });
 
-        MyInterfaceImpl s = new MyInterfaceImpl();
-        BluetoothManager.beginListenForData(s);
     }
 
-    public class MyInterfaceImpl implements BluetoothListenInterface {
-        public void testFunkcija(String s){
-            //Sesija.forceNalog(reg.getText().toString(), num);
+    public class HungriaBluetoothInterface implements BluetoothListenInterface {
+        public void ouvinte(String s){
+
             String[] separated = s.split("-");
-            int x = Integer.valueOf(separated[0]); // this will contain "Fruit"
-            String yaux = separated[1].substring(0,1);
-            int y = Integer.valueOf(yaux); // this will contain " they taste good"
+            String yaux = separated[1].substring(0,separated[1].length()-1);
 
-            ((MapItemView) getViewByPosition(x+y, gridView)).status = 4;
-            ((MapItemView) getViewByPosition(x+y, gridView)).display();
-
-            Toast.makeText(InHungriaActivity.this,s, Toast.LENGTH_LONG).show();
-            Button b = teste;
-
+            if (separated[0].equalsIgnoreCase("A")) {
+                int y = Integer.valueOf(yaux);
+                if (((MapItemView) getViewByPosition(y, gridView)).status == 1) {
+                    Toast.makeText(InHungriaActivity.this, "Concluido", Toast.LENGTH_LONG).show();
+                } else if (((MapItemView) getViewByPosition(y, gridView)).status == 2) {
+                    Toast.makeText(InHungriaActivity.this, "Voltou para origem", Toast.LENGTH_LONG).show();
+                }  else {
+                    ((MapItemView) getViewByPosition(y, gridView)).status = 4;
+                    ((MapItemView) getViewByPosition(y, gridView)).display(false);
+                }
+                Toast.makeText(InHungriaActivity.this, s, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -98,69 +119,62 @@ public class InHungriaActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main_settings, menu);
+
+        miSettings = (MenuItem) menu.findItem(R.id.am_menu_main_settings);
+        miSave = (MenuItem) menu.findItem(R.id.am_menu_main_save_project);
+        miLoad = (MenuItem) menu.findItem(R.id.am_menu_main_load_project);
+        miReset = (MenuItem) menu.findItem(R.id.am_menu_main_reset_project);
+        miRun = (MenuItem) menu.findItem(R.id.am_menu_main_run_project);
+        miDebug = (MenuItem) menu.findItem(R.id.am_menu_main_debug_project);
+        miBluetooth = (MenuItem) menu.findItem(R.id.am_menu_main_bluetooth);
+
+        miSettings.setEnabled(false);
+        miSave.setEnabled(false);
+        miLoad.setEnabled(false);
+        miReset.setEnabled(false);
+        miRun.setEnabled(true);
+        miDebug.setEnabled(false);
+        miBluetooth.setEnabled(false);
+
+
+        miRun.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+                } else {
+                    Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+
+                int qnt_target = 0;
+                int qnt_source = 0;
+                for (int i = 0; i < 64; i++) {
+                    if (((MapItemView) getViewByPosition(i , gridView)).status == 1)
+                        qnt_target++;
+                    if (((MapItemView) getViewByPosition(i , gridView)).status == 2)
+                        qnt_source++;
+                }
+
+                if (qnt_source != 1 || qnt_source != 1) {
+                    Toast.makeText(InHungriaActivity.this,
+                            "Você deve ter 1 destino e 1 origem... mas tem " + qnt_target + " destinos e " + qnt_source + " origens",
+                            Toast.LENGTH_LONG).show();
+                    BluetoothManager.closeListenBluetooth();
+                } else {
+                    Toast.makeText(InHungriaActivity.this, "Pronto para começar", Toast.LENGTH_LONG).show();
+                    BluetoothManager.beginListenForData(bluetooth_interface);
+                }
+
+                return true;
+            }
+        });
+
+        return true;
+
+    }
 }
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_in_hungria);
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.content_in_hungria_activity);
-////        ConstraintSet set = new ConstraintSet();
-//
-//        Display display = getWindowManager(). getDefaultDisplay();
-//        Point size = new Point();
-//        display. getSize(size);
-//        final int tamanho_horizontal = size.x;
-//        final int tamanho_vertical = size.y;
-//
-//
-////        FloatingActionButton fab = findViewById(R.id.fab);
-////        fab.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-////                        .setAction("Action", null).show();
-////            }
-////        });
-//
-//
-//        for(int i = 0; i < 8; i++) {
-//            for(int j = 0; j < 8; j++) {
-//
-//                Button btn= new Button(this);
-//                String id = "i: " + i + " - j: " + j;
-//                btn.setId( i * 8 + j);
-//
-//                final int w = (int) (((int) tamanho_horizontal - margem_direita - margem_esquerda)/8);
-//                final int h = (int) (((int) tamanho_vertical - margem_inferior - margem_superior)/8);
-//                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(w, h);
-//                params.leftMargin = (int) margem_direita + (w * j);
-//                params.topMargin = (int)  margem_inferior + ((h-32) * i) ;
-//                params.width=w;
-//                params.height=h;
-//                layout.addView(btn, params);
-//
-//                btn.setOnClickListener(new View.OnClickListener()
-//                {
-//                    public void onClick(View view)
-//                    {
-//                        Toast.makeText(InHungriaActivity.this,tamanho_horizontal + " -- "+ tamanho_vertical, Toast.LENGTH_LONG).show();//your write code
-//                    }
-//                });
-//            }
-//        }
-//    }
-//
-//    public class MyInterfaceImpl implements BluetoothListenInterface {
-//        public void testFunkcija(){
-//            //Sesija.forceNalog(reg.getText().toString(), num);
-//            String id = "i: " + 0 + " - j: " + 0;
-//            Button b = teste;
-//
-//        }
-//    }
-
 
