@@ -2,16 +2,23 @@ package br.escolaprogramacao.robotmaker;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+//import android.support.design.widget.FloatingActionButton;
+//import android.support.v7.app.AlertDialog;
+//import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothListenInterface;
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
@@ -35,7 +42,7 @@ public class RobertActivity extends AppCompatActivity {
     private FloatingActionButton fab_seta_start;
     private FloatingActionButton fab_seta_finish;
 
-    private WebAppInterfaceKit1 interface_android_web;
+    private WebAppInterfaceRobert interface_android_web;
     private RobertBluetoothInterface bluetooth_interface = new RobertBluetoothInterface();
 
     private MenuItem miSettings;
@@ -47,11 +54,18 @@ public class RobertActivity extends AppCompatActivity {
     private MenuItem miBluetooth;
     private WebView webview;
 
+    private AlertDialog alerta;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_robert);
+
+        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+        } else {
+            Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
+        }
 
 //        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
 //        } else {
@@ -65,7 +79,7 @@ public class RobertActivity extends AppCompatActivity {
 
         webview = (WebView) findViewById(R.id.wv_robert_activity_site);
         webview.loadUrl("file:///android_asset/site/index.html");
-        interface_android_web = new WebAppInterfaceKit1(this, webview);
+        interface_android_web = new WebAppInterfaceRobert(this, webview);
 
         WebSettings setting = webview.getSettings();
         setting.setJavaScriptEnabled(true);
@@ -278,6 +292,7 @@ public class RobertActivity extends AppCompatActivity {
 
         if (id == R.id.am_menu_main_settings) {
             //interface_android_web.load_graph_js();
+            exemplo_layout();
             return true;
         } else if (id == R.id.am_menu_main_save_project) {
             Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
@@ -300,20 +315,52 @@ public class RobertActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void run_project() {
-        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-        } else {
-            Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
-            return;
-        }
-        Toast.makeText(RobertActivity.this, "Pronto para começar", Toast.LENGTH_LONG).show();
-        BluetoothManager.beginListenForData(bluetooth_interface);
 
+    private void exemplo_layout() {
+        //LayoutInflater é utilizado para inflar nosso layout em uma view.
+        //-pegamos nossa instancia da classe
+        LayoutInflater li = getLayoutInflater();
+
+        //inflamos o layout alerta.xml na view
+        View view = li.inflate(R.layout.layout_setting_robert, null);
+//        final EditText tv = (EditText) view.findViewById(R.id.tv_name_lay_setting_robert);
+        //definimos para o botão do layout um clickListener
+        view.findViewById(R.id.bt_dimiss_lay_setting_robert).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                //exibe um Toast informativo.
+                Toast.makeText(RobertActivity.this, "alerta.dismiss()", Toast.LENGTH_SHORT).show();
+
+//                String nome = tv.getText().toString();
+//                Toast.makeText(getBaseContext(), nome, Toast.LENGTH_LONG).show();
+                //desfaz o alerta.
+                alerta.dismiss();
+            }
+        });
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Configuraçcões do Robert");
+        builder.setView(view);
+        alerta = builder.create();
+        alerta.show();
+    }
+
+
+    private void run_project() {
         if (webview != null) {
             interface_android_web.form_graph_java();
         } else {
             Toast.makeText(RobertActivity.this, "Não é possível executar", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+//        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+//        } else {
+//            Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+
+//        Toast.makeText(RobertActivity.this, "Pronto para começar", Toast.LENGTH_LONG).show();
+//        BluetoothManager.beginListenForData(bluetooth_interface);
 //        BluetoothManager.getBluetoothManager(RobertActivity.this).write("asdas", RobertActivity.this);
 
     }

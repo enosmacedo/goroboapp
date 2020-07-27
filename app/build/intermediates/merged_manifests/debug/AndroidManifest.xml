@@ -8,14 +8,16 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="27" />
 
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"
-        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@drawable/logo02"
         android:label="@string/app_name"
@@ -23,6 +25,17 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity
+            android:name="br.escolaprogramacao.robotmaker.MarianActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="br.escolaprogramacao.robotmaker.LoginActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="br.escolaprogramacao.robotmaker.InHungriaActivity"
             android:label="@string/title_activity_in_hungria"
@@ -35,18 +48,11 @@
         <activity
             android:name="br.escolaprogramacao.robotmaker.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="br.escolaprogramacao.robotmaker.com.android.tools.ir.server.InstantRunContentProvider"
-            android:multiprocess="true" />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="androidx.biometric.DeviceCredentialHandlerActivity"
+            android:exported="true"
+            android:theme="@style/DeviceCredentialHandlerTheme" />
     </application>
 
 </manifest>

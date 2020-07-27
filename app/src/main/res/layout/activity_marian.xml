@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    android:background="@drawable/camuflado2"
+    tools:context=".MarianActivity">
+
+
+    <ImageView
+        android:id="@+id/ibt_up_act_marian"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:srcCompat="@drawable/ic_circulo_seta_direita" />
+
+    <ImageView
+        android:id="@+id/ibt_left_act_marian"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:srcCompat="@drawable/ic_circulo_seta_cima" />
+
+    <ImageView
+        android:id="@+id/ibt_right_act_marian"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:srcCompat="@drawable/ic_circulo_seta_baixo" />
+
+    <ImageView
+        android:id="@+id/ibt_down_act_marian"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:srcCompat="@drawable/ic_circulo_seta_esquerda" />
+
+    <ImageView
+        android:id="@+id/ibt_stop_act_marian"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_circulo_seta_stop" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="74dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="20dp"
+        android:rotation="90"
+        app:layout_constraintEnd_toStartOf="@+id/ibt_up_act_marian"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo02" />
+
+    <ImageView
+        android:id="@+id/ibt_return_left_act_marian"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/ibt_down_act_marian"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_return_left" />
+
+    <ImageView
+        android:id="@+id/ibt_return_right_act_marian"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibt_down_act_marian"
+        app:srcCompat="@drawable/ic_return_right" />
+
+    <ImageView
+        android:id="@+id/ibt_target_act_marian"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_target" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

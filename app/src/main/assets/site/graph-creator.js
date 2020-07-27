@@ -40,6 +40,8 @@ function form_graph_js() {
           saveEdges.push({source: val.source.id, target: val.target.id});
        });
        var a = window.JSON.stringify({"nodes": thisGraph.nodes, "edges": saveEdges});
+//       AndroidInterface.run(a);
+
        return ("" + a);
 }
 
@@ -131,7 +133,7 @@ var principal = function(d3, saveAs, Blob, undefined){
         }else if (d.type == 5) {
             return "imgs/ic_circulo_seta_stop.png";
         }else if (d.type == 6) {
-            return "imgs/ic_start.png";
+            return "imgs/ic_start2.png";
         }else if (d.type == 7) {
             return "imgs/ic_circle_chegada.png";
         }

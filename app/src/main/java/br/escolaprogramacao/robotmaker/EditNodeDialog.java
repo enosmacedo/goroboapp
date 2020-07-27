@@ -2,16 +2,16 @@ package br.escolaprogramacao.robotmaker;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
 
 public class EditNodeDialog extends Dialog {
 
@@ -30,11 +30,11 @@ public class EditNodeDialog extends Dialog {
     private String value;
     private String set;
 
-    private WebAppInterfaceKit1 interface_android_web;
+    private WebAppInterfaceRobert interface_android_web;
     private Context mContext;
 
     public EditNodeDialog(@NonNull Context context, String id, String title, String type,
-                          String set, String value, WebAppInterfaceKit1 interface_android_web) {
+                          String set, String value, WebAppInterfaceRobert interface_android_web) {
         super(context);
         this.mContext = context;
         this.interface_android_web = interface_android_web;

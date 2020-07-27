@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+<!--    android:layout_gravity="center"-->
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/logo02"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"/>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_time_lay_seeting_robert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time" />
+
+        <RadioButton
+            android:id="@+id/rb_length_lay_seeting_robert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Length" />
+
+        <EditText
+            android:id="@+id/et_value_lay_setting_robert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/bt_dimiss_lay_setting_robert"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Save and Finish" />
+</LinearLayout>

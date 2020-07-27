@@ -4,8 +4,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;
     private Button btn_go_robert;
     private Button btn_in_hungria;
+    private Button btn_go_marian;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         root.setBackgroundColor(Color.WHITE);
 
         btn_go_robert = (Button) findViewById(R.id.btn_main_activity_go_kit1);
-        btn_go_robert.setBackgroundColor(Color.WHITE);
         btn_go_robert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,16 +60,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btn_in_hungria = (Button) findViewById(R.id.btn_main_activity_in_hungria);
-        btn_in_hungria.setBackgroundColor(Color.WHITE);
         btn_in_hungria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, InHungriaActivity.class);
+                startActivity(i);
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    Intent i = new Intent(MainActivity.this, InHungriaActivity.class);
-                    startActivity(i);
                 } else {
                     Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btn_go_marian = (Button) findViewById(R.id.btn_main_activity_go_marian);
+        btn_go_marian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, MarianActivity.class);
+                startActivity(i);
+//                if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+//                } else {
+//                    Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 

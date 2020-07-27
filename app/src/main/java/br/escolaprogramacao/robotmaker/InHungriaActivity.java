@@ -1,16 +1,28 @@
 package br.escolaprogramacao.robotmaker;
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.pdf.PdfRenderer;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+//import android.support.constraint.ConstraintLayout;
+//import android.support.constraint.ConstraintSet;
+//import android.support.design.widget.FloatingActionButton;
+//import android.support.design.widget.Snackbar;
+//import android.support.v7.app.ActionBar;
+//import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.widget.Toolbar;
+import android.os.Environment;
+import android.os.ParcelFileDescriptor;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,10 +38,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothListenInterface;
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
+
 
 public class InHungriaActivity extends AppCompatActivity {
 
@@ -60,6 +80,7 @@ public class InHungriaActivity extends AppCompatActivity {
             "Q", "E", "T", "E", "Q", "C", "C", "T",
             "C", "E", "Q", "C", "T", "Q", "E", "Q"};
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,13 +88,22 @@ public class InHungriaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-//        } else {
-//            Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível ficar nesse módulo", Toast.LENGTH_SHORT).show();
-//            InHungriaActivity.this.finish();
-//        }
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
 
         gridView = (GridView) findViewById(R.id.gv_map_hungria_activity);
+        gridView.setColumnWidth(width/8);
+//        LayerDrawable layer = (LayerDrawable) gridView.getBackground();
+//        Context resources = this;
+//        BitmapDrawable bitmap = (BitmapDrawable) resources.getDrawable(R.drawable.tabuleira_cidade_moderna);
+//        layer.setDrawableByLayerId(R.id.gv, bitmap);
+        // change background color
+//        GradientDrawable bgShape = (GradientDrawable) gridView.getBackground();
+//        bgShape.setColor(Color.BLUE);
+
 
         final MapAdapter adapter = new MapAdapter(numbers, this);
         gridView.setAdapter(adapter);
@@ -85,6 +115,10 @@ public class InHungriaActivity extends AppCompatActivity {
         });
 
     }
+
+
+
+
 
     public class HungriaBluetoothInterface implements BluetoothListenInterface {
         public void ouvinte(String s){

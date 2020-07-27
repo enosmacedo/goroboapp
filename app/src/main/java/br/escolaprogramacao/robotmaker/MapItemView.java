@@ -66,15 +66,15 @@ public class MapItemView extends FrameLayout {
             dialog.show();
         }
 
-        if (t == Type.CIRCULO) {
-            textView.setImageResource(R.drawable.circulo_vermelho);
-        } else if (t == Type.ESRELA) {
-            textView.setImageResource(R.drawable.estrela_verde);
-        } else if (t == Type.TRIANGULO) {
-            textView.setImageResource(R.drawable.triangulo_azul);
-        } else if (t == Type.QUADRADO) {
-            textView.setImageResource(R.drawable.quadrado_amarelo);
-        }
+//        if (t == Type.CIRCULO) {
+//            textView.setImageResource(R.drawable.circulo_vermelho);
+//        } else if (t == Type.ESRELA) {
+//            textView.setImageResource(R.drawable.estrela_verde);
+//        } else if (t == Type.TRIANGULO) {
+//            textView.setImageResource(R.drawable.triangulo_azul);
+//        } else if (t == Type.QUADRADO) {
+//            textView.setImageResource(R.drawable.quadrado_amarelo);
+//        }
 
         if (status == 0) {
             textView.setBackgroundResource(R.drawable.border_null);
