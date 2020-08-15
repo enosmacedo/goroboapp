@@ -8,16 +8,20 @@
         "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\drawable\\ic_varias_setas_coloridas_destacadas.png"
     },
     {
+        "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_second.xml.flat",
+        "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\layout\\fragment_second.xml"
+    },
+    {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_quadrado_amarelo.png.flat",
         "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\drawable\\quadrado_amarelo.png"
     },
     {
-        "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_robert.xml.flat",
-        "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\layout\\content_robert.xml"
-    },
-    {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_power_gresso.png.flat",
         "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\drawable\\ic_power_gresso.png"
+    },
+    {
+        "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_robert.xml.flat",
+        "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\layout\\content_robert.xml"
     },
     {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_return_right.png.flat",
@@ -58,6 +62,10 @@
     {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo01.png.flat",
         "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\drawable\\logo01.png"
+    },
+    {
+        "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\navigation\\nav_graph.xml"
     },
     {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
@@ -130,6 +138,10 @@
     {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_camuflado1.jpg.flat",
         "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\drawable\\camuflado1.jpg"
+    },
+    {
+        "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_first.xml.flat",
+        "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\layout\\fragment_first.xml"
     },
     {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_delete.png.flat",
@@ -222,6 +234,10 @@
     {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_in_hungria.xml.flat",
         "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\layout\\content_in_hungria.xml"
+    },
+    {
+        "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_marian_settings.xml.flat",
+        "source": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\src\\main\\res\\menu\\menu_marian_settings.xml"
     },
     {
         "merged": "C:\\Users\\daniel\\Documents\\AndroidStudio\\goroboapp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_start2.png.flat",
