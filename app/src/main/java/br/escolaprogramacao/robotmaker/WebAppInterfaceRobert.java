@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
+import br.escolaprogramacao.robotmaker.bluetooth.Commands;
 import br.escolaprogramacao.robotmaker.graph.Graph;
 import br.escolaprogramacao.robotmaker.graph.Node;
 import br.escolaprogramacao.robotmaker.graph.Path;
@@ -122,48 +123,50 @@ public class WebAppInterfaceRobert {
                 ArrayList<Node> unico_caminho_nos = unico_caminho.getPathNode();
                 for (int j = 0; j < unico_caminho_nos.size(); j++) {
                     Node n = unico_caminho_nos.get(j);
+                    res = res + Commands.getInstance().COMANDO_EH_DISCRETO;
+
                     if (n.getType().equals("1")) { //baixo
-                        if (n.getSet().equals("1")) {
-                            res = res + "A" + n.getValue();
-                        } else {
-                            res = res + "B" + n.getValue();
-                        }
+//                        if (n.getSet().equals("1")) {
+                            res = res + Commands.getInstance().COMANDO_TRAS + n.getValue();
+//                        } else {
+//                            res = res + "B" + n.getValue();
+//                        }
                     } else if (n.getType().equals("2")) { //cima
-                        if (n.getSet().equals("1")) {
-                            res = res + "C" + n.getValue();
-                        } else {
-                            res = res + "D" + n.getValue();
-                        }
+//                        if (n.getSet().equals("1")) {
+                            res = res + Commands.getInstance().COMANDO_FRENTE + n.getValue();
+//                        } else {
+//                            res = res + "D" + n.getValue();
+//                        }
                     } else if (n.getType().equals("3")) { //direita
-                        if (n.getSet().equals("1")) {
-                            res = res + "E" + n.getValue();
-                        } else {
-                            res = res + "F" + n.getValue();
-                        }
+//                        if (n.getSet().equals("1")) {
+                            res = res + Commands.getInstance().COMANDO_DIREITA + n.getValue();
+//                        } else {
+//                            res = res + "F" + n.getValue();
+//                        }
                     } else if (n.getType().equals("4")) { //esquerda
-                        if (n.getSet().equals("1")) { //baixo
-                            res = res + "G" + n.getValue();
-                        } else {
-                            res = res + "H" + n.getValue();
-                        }
+//                        if (n.getSet().equals("1")) { //baixo
+                            res = res + Commands.getInstance().COMANDO_ESQUERDA + n.getValue();
+//                        } else {
+//                            res = res + "H" + n.getValue();
+//                        }
                     } else if (n.getType().equals("5")) { //stop
-                        if (n.getSet().equals("1")) {
-                            res = res + "I" + n.getValue();
-                        } else {
-                            res = res + "J" + n.getValue();
-                        }
+//                        if (n.getSet().equals("1")) {
+                            res = res + Commands.getInstance().COMANDO_PARE + n.getValue();
+//                        } else {
+//                            res = res + "J" + n.getValue();
+//                        }
                     } else if (n.getType().equals("6")) { //start
-                        if (n.getSet().equals("1")) {
-                            res = res + "L" + n.getValue();
-                        } else {
-                            res = res + "M" + n.getValue();
-                        }
+//                        if (n.getSet().equals("1")) {
+                            res = res + Commands.getInstance().COMANDO_START + n.getValue();
+//                        } else {
+//                            res = res + "M" + n.getValue();
+//                        }
                     } else if (n.getType().equals("5")) { //chegada
-                        if (n.getSet().equals("1")) {
-                            res = res + "N" + n.getValue();
-                        } else {
-                            res = res + "O" + n.getValue();
-                        }
+//                        if (n.getSet().equals("1")) {
+                            res = res + Commands.getInstance().COMANDO_END + n.getValue();
+//                        } else {
+//                            res = res + "O" + n.getValue();
+//                        }
                     }
                 }
 
