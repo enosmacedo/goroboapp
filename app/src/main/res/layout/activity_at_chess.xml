@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AtHungriaActivity">
+    tools:context=".AtChessActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/menu_in_hungria"
+        android:id="@+id/menu_at_chess"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_in_hungria"
+            android:id="@+id/toolbar_at_chess"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -21,5 +21,5 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <include layout="@layout/content_in_hungria" />
+    <include layout="@layout/content_at_chess" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

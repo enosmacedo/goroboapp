@@ -2,26 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_in_hungria_activity"
+    android:id="@+id/content_at_chess_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fundomaps"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".graph.InHungriaActivity"
-    tools:showIn="@layout/activity_in_hungria" >
+    tools:context=".graph.AtChessActivity"
+    tools:showIn="@layout/activity_at_chess" >
 
 
 <!--        android:gravity="center"-->
 <!--        android:columnWidth="40dp"-->
 
         <GridView
-            android:id="@+id/gv_map_hungria_activity"
+            android:id="@+id/gv_map_chess_activity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
-            android:numColumns="8"
-
-            android:background="@drawable/tabuleira_cidade_moderna" />
+            android:numColumns="8" />
 
 
 </RelativeLayout>

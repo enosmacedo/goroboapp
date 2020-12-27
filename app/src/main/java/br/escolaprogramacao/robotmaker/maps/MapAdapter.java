@@ -1,21 +1,26 @@
-package br.escolaprogramacao.robotmaker;
+package br.escolaprogramacao.robotmaker.maps;
 
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.FrameLayout;
 
 public class MapAdapter extends BaseAdapter {
 
     private Activity activity;
     private String[] strings;
+    private int width_grid;
+    private int height_grid;
+    private final int num_lines = 8;
+    private final int num_clumns = 8;
 
-    public MapAdapter(String[] strings, Activity activity) {
+    public MapAdapter(String[] strings, Activity activity, int width_grid, int height_grid) {
         this.strings = strings;
         this.activity = activity;
+
+        this.width_grid = width_grid;
+        this.height_grid = height_grid;
     }
 
     @Override
@@ -35,7 +40,6 @@ public class MapAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         MapItemView customView ;
         if (convertView == null) {
             MapItemView.Type tipo = MapItemView.Type.ESRELA;
@@ -50,13 +54,12 @@ public class MapAdapter extends BaseAdapter {
             }
 
             customView = new MapItemView(activity, tipo, 0);
-
         } else {
             customView = (MapItemView) convertView;
         }
 
+        customView.setLayoutParams(new FrameLayout.LayoutParams(this.width_grid /num_lines,this.height_grid /num_clumns));
         customView.display(strings[position]);
-
         return customView;
     }
 }

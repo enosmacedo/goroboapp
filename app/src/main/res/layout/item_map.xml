@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/text"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:gravity="center"
         android:textColor="@android:color/black"
         android:textSize="12sp" />

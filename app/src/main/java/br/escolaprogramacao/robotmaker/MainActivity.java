@@ -33,14 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView lv;
     private Button btn_go_robert;
-    private Button btn_in_hungria;
+    private Button btn_at_hungria;
     private Button btn_go_marian;
+    private Button btn_at_chess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_in_hungria);
         setSupportActionBar(toolbar);
 
         View root = findViewById(R.id.mainlayout);
@@ -59,11 +60,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn_in_hungria = (Button) findViewById(R.id.btn_main_activity_in_hungria);
-        btn_in_hungria.setOnClickListener(new View.OnClickListener() {
+        btn_at_hungria = (Button) findViewById(R.id.btn_main_activity_in_hungria);
+        btn_at_hungria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, InHungriaActivity.class);
+                Intent i = new Intent(MainActivity.this, AtHungriaActivity.class);
+                startActivity(i);
+                if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+                } else {
+                    Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn_at_chess = (Button) findViewById(R.id.btn_main_activity_at_chess);
+        btn_at_chess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AtChessActivity.class);
                 startActivity(i);
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
                 } else {

@@ -73,7 +73,7 @@ public class RobertActivity extends AppCompatActivity {
 ////            RobertActivity.this.finish();
 //        }
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_in_hungria);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Go Robo!");
 

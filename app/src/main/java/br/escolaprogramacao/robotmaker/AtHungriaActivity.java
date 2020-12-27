@@ -1,57 +1,23 @@
 package br.escolaprogramacao.robotmaker;
-
-import android.bluetooth.BluetoothAdapter;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.pdf.PdfRenderer;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-//import android.support.constraint.ConstraintLayout;
-//import android.support.constraint.ConstraintSet;
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.design.widget.Snackbar;
-//import android.support.v7.app.ActionBar;
-//import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.widget.Toolbar;
-import android.os.Environment;
-import android.os.ParcelFileDescriptor;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsoluteLayout;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import br.escolaprogramacao.robotmaker.bluetooth.BluetoothListenInterface;
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
+import br.escolaprogramacao.robotmaker.bluetooth.interfaces.HungriaBluetoothInterface;
+import br.escolaprogramacao.robotmaker.maps.MapAdapter;
+import br.escolaprogramacao.robotmaker.maps.MapItemView;
 
 
-public class InHungriaActivity extends AppCompatActivity {
+public class AtHungriaActivity extends AppCompatActivity {
 
     float margem_superior = 150;
     float margem_inferior = 150;
@@ -67,7 +33,7 @@ public class InHungriaActivity extends AppCompatActivity {
     private MenuItem miDebug ;
     private MenuItem miBluetooth ;
 
-    private HungriaBluetoothInterface bluetooth_interface = new HungriaBluetoothInterface();
+    private HungriaBluetoothInterface bluetooth_interface;
 
     private GridView gridView;
     private static final String[] numbers = new String[]{
@@ -85,60 +51,28 @@ public class InHungriaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_hungria);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_in_hungria);
         setSupportActionBar(toolbar);
 
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-
         gridView = (GridView) findViewById(R.id.gv_map_hungria_activity);
-        gridView.setColumnWidth(width/8);
-//        LayerDrawable layer = (LayerDrawable) gridView.getBackground();
-//        Context resources = this;
-//        BitmapDrawable bitmap = (BitmapDrawable) resources.getDrawable(R.drawable.tabuleira_cidade_moderna);
-//        layer.setDrawableByLayerId(R.id.gv, bitmap);
-        // change background color
-//        GradientDrawable bgShape = (GradientDrawable) gridView.getBackground();
-//        bgShape.setColor(Color.BLUE);
 
-
-        final MapAdapter adapter = new MapAdapter(numbers, this);
-        gridView.setAdapter(adapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.post(new Runnable() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                ((MapItemView) v).display(true);
+            public void run() {
+                int grid_height = gridView.getMeasuredHeight();
+                int grid_width =  gridView.getMeasuredWidth();
+                final MapAdapter adapter = new MapAdapter(numbers, AtHungriaActivity.this, grid_width, grid_height);
+                gridView.setAdapter(adapter);
+                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                        ((MapItemView) v).display(true);
+                    }
+                });
             }
         });
 
-    }
-
-
-
-
-
-    public class HungriaBluetoothInterface implements BluetoothListenInterface {
-        public void ouvinte(String s){
-
-            String[] separated = s.split("-");
-            String yaux = separated[1].substring(0,separated[1].length()-1);
-
-            if (separated[0].equalsIgnoreCase("A")) {
-                int y = Integer.valueOf(yaux);
-                if (((MapItemView) getViewByPosition(y, gridView)).status == 1) {
-                    Toast.makeText(InHungriaActivity.this, "Concluido", Toast.LENGTH_LONG).show();
-                } else if (((MapItemView) getViewByPosition(y, gridView)).status == 2) {
-                    Toast.makeText(InHungriaActivity.this, "Voltou para origem", Toast.LENGTH_LONG).show();
-                }  else {
-                    ((MapItemView) getViewByPosition(y, gridView)).status = 4;
-                    ((MapItemView) getViewByPosition(y, gridView)).display(false);
-                }
-                Toast.makeText(InHungriaActivity.this, s, Toast.LENGTH_LONG).show();
-            }
-        }
+        bluetooth_interface = new HungriaBluetoothInterface(this, gridView);
     }
 
     public View getViewByPosition(int pos, GridView listView) {
@@ -194,12 +128,12 @@ public class InHungriaActivity extends AppCompatActivity {
                 }
 
                 if (qnt_source != 1 || qnt_source != 1) {
-                    Toast.makeText(InHungriaActivity.this,
+                    Toast.makeText(AtHungriaActivity.this,
                             "Você deve ter 1 destino e 1 origem... mas tem " + qnt_target + " destinos e " + qnt_source + " origens",
                             Toast.LENGTH_LONG).show();
                     BluetoothManager.closeListenBluetooth();
                 } else {
-                    Toast.makeText(InHungriaActivity.this, "Pronto para começar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AtHungriaActivity.this, "Pronto para começar", Toast.LENGTH_LONG).show();
                     BluetoothManager.beginListenForData(bluetooth_interface);
                 }
 

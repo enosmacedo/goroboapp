@@ -9,6 +9,7 @@
     <string name="am_menun_main_debug_project">Depurar</string>
     <string name="am_menun_main_bluetooth">Conectar Bluetooth</string>
     <string name="title_activity_in_hungria">InHungriaActivity</string>
+    <string name="title_activity_at_chess">AtChessActivity</string>
     <string name="title_activity_main2">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

@@ -16,6 +16,15 @@ public class Commands {
     public String COMANDO_START = "Y";
     public String COMANDO_END = "T";
 
+    public String COMANDO_READ_HUNGRIA_01 = "A";
+    public String COMANDO_READ_HUNGRIA_02 = "B";
+    public String COMANDO_READ_HUNGRIA_03 = "C";
+    public String COMANDO_READ_HUNGRIA_04 = "D";
+    public String COMANDO_READ_HUNGRIA_CALCULADO = "E";
+    public String COMANDO_HUNGRIA_PING   = "x";
+
+
+
     private Commands() {
     }
 

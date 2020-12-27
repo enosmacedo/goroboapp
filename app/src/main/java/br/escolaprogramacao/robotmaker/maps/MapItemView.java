@@ -1,4 +1,4 @@
-package br.escolaprogramacao.robotmaker;
+package br.escolaprogramacao.robotmaker.maps;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import br.escolaprogramacao.robotmaker.R;
 
 public class MapItemView extends FrameLayout {
     private ImageView textView;
@@ -75,6 +77,7 @@ public class MapItemView extends FrameLayout {
 //        } else if (t == Type.QUADRADO) {
 //            textView.setImageResource(R.drawable.quadrado_amarelo);
 //        }
+
 
         if (status == 0) {
             textView.setBackgroundResource(R.drawable.border_null);

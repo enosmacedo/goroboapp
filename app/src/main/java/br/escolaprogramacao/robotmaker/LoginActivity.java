@@ -30,8 +30,24 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        isFingerEnable();
-        read_finger();
+
+
+        Button btn_login_finger_login_activity = (Button) findViewById(R.id.btn_login_finger_login_activity);
+        btn_login_finger_login_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isFingerEnable();
+            }
+        });
+
+        Button btn_login_password_login_activity = (Button) findViewById(R.id.btn_login_password_login_activity);
+        btn_login_password_login_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
 //        imgbtn_act_login = (ImageButton) findViewById(R.id.iv_login_act_login);
 //        imgbtn_act_login.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         switch (biometricManager.canAuthenticate()) {
             case BiometricManager.BIOMETRIC_SUCCESS:
                 Log.d("MY_APP_TAG", "App can authenticate using biometrics.");
+                read_finger();
                 break;
             case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
                 Log.e("MY_APP_TAG", "No biometric features available on this device.");
