@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,12 +22,12 @@ public class MarianActivity extends AppCompatActivity {
     ImageView ibt_right_act_marian;
     ImageView ibt_target_act_marian;
     ImageView ibt_stop_act_marian;
-    Context mContext;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marian);
-        mContext = this;
+        context = this;
 
         ibt_return_left_act_marian = (ImageView) findViewById(R.id.ibt_return_left_act_marian);
         ibt_left_act_marian = (ImageView) findViewById(R.id.ibt_left_act_marian);
@@ -47,9 +46,9 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    Toast.makeText(mContext, "Comando não implementado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Comando não implementado", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -57,9 +56,9 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    BluetoothManager.getBluetoothManager(mContext).write(Commands.getInstance().COMANDO_ESQUERDA, mContext);
+                    BluetoothManager.getBluetoothManager(context).write(Commands.getInstance().COMANDO_ESQUERDA, context);
                 } else {
-                    Toast.makeText(mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -67,9 +66,9 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    BluetoothManager.getBluetoothManager(mContext).write(Commands.getInstance().COMANDO_TRAS, mContext);
+                    BluetoothManager.getBluetoothManager(context).write(Commands.getInstance().COMANDO_TRAS, context);
                 } else {
-                    Toast.makeText(mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -77,9 +76,9 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    BluetoothManager.getBluetoothManager(mContext).write(Commands.getInstance().COMANDO_FRENTE, mContext);
+                    BluetoothManager.getBluetoothManager(context).write(Commands.getInstance().COMANDO_FRENTE, context);
                 } else {
-                    Toast.makeText(mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -87,9 +86,9 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    Toast.makeText(mContext, "Comando não implementado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Comando não implementado", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -97,9 +96,9 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    BluetoothManager.getBluetoothManager(mContext).write(Commands.getInstance().COMANDO_DIREITA, mContext);
+                    BluetoothManager.getBluetoothManager(context).write(Commands.getInstance().COMANDO_DIREITA, context);
                 } else {
-                    Toast.makeText(mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -107,9 +106,9 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    BluetoothManager.getBluetoothManager(mContext).write(Commands.getInstance().COMANDO_PARE, mContext);
+                    BluetoothManager.getBluetoothManager(context).write(Commands.getInstance().COMANDO_PARE, context);
                 } else {
-                    Toast.makeText(mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -117,9 +116,9 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    BluetoothManager.getBluetoothManager(mContext).write(Commands.getInstance().COMANDO_PRINT, mContext);
+                    BluetoothManager.getBluetoothManager(context).write(Commands.getInstance().COMANDO_PRINT, context);
                 } else {
-                    Toast.makeText(mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -139,7 +138,7 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    BluetoothManager.getBluetoothManager(mContext).write(Commands.getInstance().COMANDO_DEBUG, mContext);
+                    BluetoothManager.getBluetoothManager(context).write(Commands.getInstance().COMANDO_DEBUG, context);
                 } else {
                     Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_SHORT).show();
                     return false;
@@ -151,7 +150,7 @@ public class MarianActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                    BluetoothManager.getBluetoothManager(mContext).write(Commands.getInstance().COMANDO_MUDAR_MODULO, mContext);
+                    BluetoothManager.getBluetoothManager(context).write(Commands.getInstance().COMANDO_MUDAR_MODULO, context);
                 } else {
                     Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_SHORT).show();
                     return false;

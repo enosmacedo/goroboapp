@@ -53,49 +53,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, RobertActivity.class);
                 startActivity(i);
-                if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                } else {
-                    Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
-                }
+                BluetoothManager.validate_connection(getBaseContext(), true);
+
             }
         });
-
         btn_at_hungria = (Button) findViewById(R.id.btn_main_activity_in_hungria);
         btn_at_hungria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, AtHungriaActivity.class);
                 startActivity(i);
-                if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                } else {
-                    Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
-                }
+                BluetoothManager.validate_connection(getBaseContext(), true);
+
             }
         });
-
         btn_at_chess = (Button) findViewById(R.id.btn_main_activity_at_chess);
         btn_at_chess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, AtChessActivity.class);
                 startActivity(i);
-                if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                } else {
-                    Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
-                }
+                BluetoothManager.validate_connection(getBaseContext(), true);
             }
         });
-
         btn_go_marian = (Button) findViewById(R.id.btn_main_activity_go_marian);
         btn_go_marian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, MarianActivity.class);
                 startActivity(i);
-//                if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-//                } else {
-//                    Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
-//                }
+                BluetoothManager.validate_connection(getBaseContext(), true);
             }
         });
 
@@ -136,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
         miBluetooth.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
                 if (!BluetoothManager.getBluetoothManager(MainActivity.this).isEnabled()) {
                     Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     MainActivity.this.startActivityForResult(turnOn, 0);

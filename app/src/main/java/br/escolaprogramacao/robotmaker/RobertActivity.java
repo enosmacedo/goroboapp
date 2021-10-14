@@ -20,8 +20,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import br.escolaprogramacao.robotmaker.bluetooth.BluetoothListenInterface;
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
+import br.escolaprogramacao.robotmaker.bluetooth.interfaces.RobertBluetoothListenInterface;
 
 public class RobertActivity extends AppCompatActivity {
     boolean isFABOpen;
@@ -43,7 +43,7 @@ public class RobertActivity extends AppCompatActivity {
     private FloatingActionButton fab_seta_finish;
 
     private WebAppInterfaceRobert interface_android_web;
-    private RobertBluetoothInterface bluetooth_interface = new RobertBluetoothInterface();
+    private RobertBluetoothListenInterface bluetooth_interface;
 
     private MenuItem miSettings;
     private MenuItem miSave;
@@ -62,16 +62,7 @@ public class RobertActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_robert);
 
-        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-        } else {
-            Toast.makeText(getBaseContext(), "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
-        }
-
-//        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-//        } else {
-//            Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível ficar nesse módulo", Toast.LENGTH_SHORT).show();
-////            RobertActivity.this.finish();
-//        }
+        BluetoothManager.validate_connection(getBaseContext(), true);
 
         Toolbar toolbar = findViewById(R.id.toolbar_in_hungria);
         setSupportActionBar(toolbar);
@@ -106,96 +97,82 @@ public class RobertActivity extends AppCompatActivity {
         fab_move = (FloatingActionButton) findViewById(R.id.fab_kit1_activity_move);
 
         configurar_float_action_bar();
+        bluetooth_interface = new RobertBluetoothListenInterface(this);
     }
 
     private void configurar_float_action_bar() {
         fab_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(300);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_delete_node_arc);
             }
         });
-
         fab_move.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(200);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_move_node);
             }
         });
-
         fab_arrow_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(1);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_node_down);
             }
         });
-
         fab_arrow_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(2);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_node_up);
             }
         });
-
         fab_arrow_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(3);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_node_right);
             }
         });
-
         fab_arrow_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(4);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_node_left);
             }
         });
-
-
         fab_stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(5);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_node_stop);
             }
         });
-
         fab_seta_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(6);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_node_start);
             }
         });
-
         fab_seta_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(7);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_node_finish);
             }
         });
-
         fab_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(101);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_arc_line);
             }
         });
-
         fab_seta_reta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(102);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_add_arc_curve);
             }
         });
-
-
         fab_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interface_android_web.set_qual_tipo_novo_node_java(103);
+                interface_android_web.set_qual_tipo_novo_node_java(interface_android_web.opt_setting_node_arc);
             }
         });
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -206,7 +183,6 @@ public class RobertActivity extends AppCompatActivity {
                 }
             }
         });
-
         fab_second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -349,20 +325,13 @@ public class RobertActivity extends AppCompatActivity {
         if (webview != null) {
             interface_android_web.form_graph_java();
         } else {
-            Toast.makeText(RobertActivity.this, "Não é possível executar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RobertActivity.this, "Não é possível executa... saindor", Toast.LENGTH_SHORT).show();
             return;
         }
+        BluetoothManager.beginListenForData(bluetooth_interface);
 
-//        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-//        } else {
-//            Toast.makeText(getBaseContext(), "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
-//            return;
-//        }
-
-//        Toast.makeText(RobertActivity.this, "Pronto para começar", Toast.LENGTH_LONG).show();
-//        BluetoothManager.beginListenForData(bluetooth_interface);
-//        BluetoothManager.getBluetoothManager(RobertActivity.this).write("asdas", RobertActivity.this);
-
+        Toast.makeText(RobertActivity.this, "Pronto para começar", Toast.LENGTH_LONG).show();
+        BluetoothManager.getBluetoothManager(RobertActivity.this).write("asdas", RobertActivity.this);
     }
 
     private void delete_projetct() {
@@ -388,11 +357,6 @@ public class RobertActivity extends AppCompatActivity {
     }
 
 
-    public class RobertBluetoothInterface implements BluetoothListenInterface {
-        @Override
-        public void ouvinte(String s) {
-            Toast.makeText(RobertActivity.this, s, Toast.LENGTH_LONG).show();
-        }
-    }
+
 
 }

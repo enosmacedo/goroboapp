@@ -5,15 +5,15 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import br.escolaprogramacao.robotmaker.maps.MapItemView;
+import br.escolaprogramacao.robotmaker.maps.MapItemViewHungria;
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothListenInterface;
 
-public class HungriaBluetoothInterface implements BluetoothListenInterface {
+public class HungriaBluetoothListenInterface implements BluetoothListenInterface {
 
     public Activity context;
     private GridView gridView;
 
-    public HungriaBluetoothInterface(Activity context, GridView gridView) {
+    public HungriaBluetoothListenInterface(Activity context, GridView gridView) {
         this.context = context;
         this.gridView = gridView;
     }
@@ -26,13 +26,13 @@ public class HungriaBluetoothInterface implements BluetoothListenInterface {
 
         if (separated[0].equalsIgnoreCase("A")) {
             int y = Integer.valueOf(yaux);
-            if (((MapItemView) getViewByPosition(y, gridView)).status == 1) {
+            if (((MapItemViewHungria) getViewByPosition(y, gridView)).status == 1) {
                 Toast.makeText(context, "Concluido", Toast.LENGTH_LONG).show();
-            } else if (((MapItemView) getViewByPosition(y, gridView)).status == 2) {
+            } else if (((MapItemViewHungria) getViewByPosition(y, gridView)).status == 2) {
                 Toast.makeText(context, "Voltou para origem", Toast.LENGTH_LONG).show();
             }  else {
-                ((MapItemView) getViewByPosition(y, gridView)).status = 4;
-                ((MapItemView) getViewByPosition(y, gridView)).display(false);
+                ((MapItemViewHungria) getViewByPosition(y, gridView)).status = 4;
+                ((MapItemViewHungria) getViewByPosition(y, gridView)).display(false);
             }
             Toast.makeText(context, s, Toast.LENGTH_LONG).show();
         }

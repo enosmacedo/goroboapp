@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import br.escolaprogramacao.robotmaker.WebAppInterfaceRobert;
+
 /**
  *
  * @author daniel
@@ -151,9 +153,12 @@ public class Graph extends DefaultDirectedGraph<Node, Edge>{
         Set<Node> nos = super.vertexSet();
         for (Iterator<Node> it = nos.iterator(); it.hasNext();) {
             Node node = it.next();
-            if (getFilhos(node).size() == 0) {
+            if (Integer.valueOf(node.getType()) == WebAppInterfaceRobert.opt_add_node_finish) {
                 return node;
             }
+//            if (getFilhos(node).size() == 0) {
+//                return node;
+//            }
         }
         return null;
     }
@@ -162,9 +167,12 @@ public class Graph extends DefaultDirectedGraph<Node, Edge>{
         Set<Node> nos = super.vertexSet();
         for (Iterator<Node> it = nos.iterator(); it.hasNext();) {
             Node node = it.next();
-            if (getPais(node).size() == 0) {
+            if (Integer.valueOf(node.getType()) == WebAppInterfaceRobert.opt_add_node_start) {
                 return node;
             }
+//            if (getPais(node).size() == 0) {
+//                return node;
+//            }
         }
         return null;
     }

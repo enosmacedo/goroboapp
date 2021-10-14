@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@drawable/camuflado2"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -10,62 +10,61 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_main_activity_in_hungria"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="237dp"
+            app:srcCompat="@mipmap/logo04" />
+
+
+        <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="@android:color/white"
-        android:text="At Hungria!"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="56dp" />
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_main_activity_go_kit1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@android:color/white"
-        android:text="Go Robert!"
-        app:layout_constraintStart_toStartOf="@+id/btn_main_activity_in_hungria"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_activity_in_hungria" />
+            <Button
+                android:id="@+id/btn_main_activity_in_hungria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:text="At Hungria!"
+                tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btn_main_activity_go_marian"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@android:color/white"
-        android:text="Go Marian!"
-        app:layout_constraintStart_toStartOf="@+id/btn_main_activity_go_kit1"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_activity_go_kit1" />
+            <Button
+                android:id="@+id/btn_main_activity_go_kit1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:text="Go Robert!" />
 
-    <Button
-        android:id="@+id/btn_main_activity_at_chess"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@android:color/white"
-        android:text="At Chess!"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_activity_go_marian" />
+            <Button
+                android:id="@+id/btn_main_activity_go_marian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:text="Go Marian!"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="237dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052"
-        app:srcCompat="@mipmap/logo04" />
+
+
+            <Button
+                android:id="@+id/btn_main_activity_at_chess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:text="At Chess!"/>
+
+        </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

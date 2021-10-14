@@ -1,7 +1,6 @@
 package br.escolaprogramacao.robotmaker;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
@@ -20,45 +19,58 @@ import br.escolaprogramacao.robotmaker.graph.Path;
 import br.escolaprogramacao.robotmaker.graph.SearchAlgorithms;
 
 public class WebAppInterfaceRobert {
-    Context mContext;
+    Context context;
     WebView webview;
     public String data;
-    private int qual_tipo_novo_no = 2;
+    public static final int opt_add_node_down = 1;
+    public static final int opt_add_node_up = 2;
+    public static final int opt_add_node_right = 3;
+    public static final int opt_add_node_left = 4;
+    public static final int opt_add_node_stop = 5;
+    public static final int opt_add_node_start = 6;
+    public static final int opt_add_node_finish = 7;
+    public static final int opt_add_arc_line = 101;
+    public static final int opt_add_arc_curve = 102;
+    public static final int opt_delete_node_arc = 300;
+    public static final int opt_setting_node_arc = 103;
+    public static final int opt_move_node = 200;
+    public static final int opt_none = 0;
 
-    WebAppInterfaceRobert(Context ctx, WebView webview) {
-        this.mContext = ctx;
+
+    public WebAppInterfaceRobert(Context ctx, WebView webview) {
+        this.context = ctx;
         this.webview = webview;
     }
 
     public void set_qual_tipo_novo_node_java(int tipo_no) {
         String a = "";
-        if (tipo_no == 1 || tipo_no == 2 || tipo_no == 3 || tipo_no == 4 || tipo_no == 5 || tipo_no == 6 || tipo_no == 7) {
+        if (tipo_no == opt_add_node_down || tipo_no == opt_add_node_up || tipo_no == opt_add_node_right
+                || tipo_no == opt_add_node_left || tipo_no == opt_add_node_stop || tipo_no == opt_add_node_start
+                || tipo_no == opt_add_node_finish) {
             a += "configurar_status_teclado(true, false, false, false, false, false, false, " + tipo_no + ");";
-        } else if (tipo_no == 101) {
+        } else if (tipo_no == opt_add_arc_line) {
             a += " configurar_status_teclado(false, true, false, false, false, false, false, " + tipo_no + ");";
             webview.loadUrl("javascript:configurar_curva_aresta(true)");
-        } else if (tipo_no == 102) {
+        } else if (tipo_no == opt_add_arc_curve) {
             a += "configurar_status_teclado(false, true, false, false, false, false, false, " + tipo_no + ");";
             webview.loadUrl("javascript:configurar_curva_aresta(false)");
-        } else if (tipo_no == 103) {
+        } else if (tipo_no == opt_setting_node_arc) {
             a += "configurar_status_teclado(false, false, false, true, true, false, false, " + tipo_no + ");";
-        } else if (tipo_no == 200) {
+        } else if (tipo_no == opt_move_node) {
             a += "configurar_status_teclado(false, false, true, false, false, false, false, " + tipo_no + ");";
-        } else if (tipo_no == 0) {
+        } else if (tipo_no == opt_none) {
             a += "configurar_status_teclado(false, false, false, false, false, false, false, " + tipo_no + ");";
-        } else if (tipo_no == 300) {
+        } else if (tipo_no == opt_delete_node_arc) {
             a += "configurar_status_teclado(false, false, false, false, false, true, true, " + tipo_no + ");";
         }
 
         a = "javascript:" + a;
         webview.loadUrl(a);
-
-
     }
 
     @JavascriptInterface
     public void print(String a) {
-        Toast.makeText(mContext, "Print: " + a, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Print: " + a, Toast.LENGTH_SHORT).show();
     }
 
     public void update_node(String id, String title, String type, String set, String value) {
@@ -69,14 +81,12 @@ public class WebAppInterfaceRobert {
                 webview.loadUrl(a);
             }
         });
-
     }
 
     @JavascriptInterface
     public String edit_edge_java(String id, String title, String type, String set, String value) {
-        Toast.makeText(mContext, "edit_node: " + set, Toast.LENGTH_SHORT).show();
-        EditNodeDialog dialog = new EditNodeDialog(mContext, id, title, type, set, value, this);
-
+        Toast.makeText(context, "edit_node: " + set, Toast.LENGTH_SHORT).show();
+        EditNodeDialog dialog = new EditNodeDialog(context, id, title, type, set, value, this);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
@@ -91,20 +101,11 @@ public class WebAppInterfaceRobert {
 
     @JavascriptInterface
     public String edit_node_java(String id, String title, String type, String set, String value) {
-        Toast.makeText(mContext, "edit_node: " + id, Toast.LENGTH_SHORT).show();
-        EditNodeDialog dialog = new EditNodeDialog(mContext, id, title, type, set, value, this);
-
-//        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-//        lp.copyFrom(dialog.getWindow().getAttributes());
-//        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-//        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
-//        int dialogWindowHeight = (int) (lp.height * 0.7f);
-//        dialog.getWindow().setAttributes(lp);
-
+        Toast.makeText(context, "edit_node: " + id, Toast.LENGTH_SHORT).show();
+        EditNodeDialog dialog = new EditNodeDialog(context, id, title, type, set, value, this);
         dialog.show();
         return "as";
     }
-
 
     public void form_graph_java() {
         webview.loadUrl("javascript:AndroidInterface.run(form_graph_js());");
@@ -125,79 +126,41 @@ public class WebAppInterfaceRobert {
                     Node n = unico_caminho_nos.get(j);
                     res = res + Commands.getInstance().COMANDO_EH_DISCRETO;
 
-                    if (n.getType().equals("1")) { //baixo
-//                        if (n.getSet().equals("1")) {
-                            res = res + Commands.getInstance().COMANDO_TRAS + n.getValue();
-//                        } else {
-//                            res = res + "B" + n.getValue();
-//                        }
-                    } else if (n.getType().equals("2")) { //cima
-//                        if (n.getSet().equals("1")) {
-                            res = res + Commands.getInstance().COMANDO_FRENTE + n.getValue();
-//                        } else {
-//                            res = res + "D" + n.getValue();
-//                        }
-                    } else if (n.getType().equals("3")) { //direita
-//                        if (n.getSet().equals("1")) {
-                            res = res + Commands.getInstance().COMANDO_DIREITA + n.getValue();
-//                        } else {
-//                            res = res + "F" + n.getValue();
-//                        }
-                    } else if (n.getType().equals("4")) { //esquerda
-//                        if (n.getSet().equals("1")) { //baixo
-                            res = res + Commands.getInstance().COMANDO_ESQUERDA + n.getValue();
-//                        } else {
-//                            res = res + "H" + n.getValue();
-//                        }
-                    } else if (n.getType().equals("5")) { //stop
-//                        if (n.getSet().equals("1")) {
-                            res = res + Commands.getInstance().COMANDO_PARE + n.getValue();
-//                        } else {
-//                            res = res + "J" + n.getValue();
-//                        }
-                    } else if (n.getType().equals("6")) { //start
-//                        if (n.getSet().equals("1")) {
-                            res = res + Commands.getInstance().COMANDO_START + n.getValue();
-//                        } else {
-//                            res = res + "M" + n.getValue();
-//                        }
-                    } else if (n.getType().equals("5")) { //chegada
-//                        if (n.getSet().equals("1")) {
-                            res = res + Commands.getInstance().COMANDO_END + n.getValue();
-//                        } else {
-//                            res = res + "O" + n.getValue();
-//                        }
+                    if (Integer.valueOf(n.getType()) == opt_add_node_down) { //baixo
+                        res = res + Commands.getInstance().COMANDO_TRAS + n.getValue();
+                    } else if (Integer.valueOf(n.getType()) == opt_add_node_up) { //cima
+                        res = res + Commands.getInstance().COMANDO_FRENTE + n.getValue();
+                    } else if (Integer.valueOf(n.getType()) == opt_add_node_right) { //direita
+                        res = res + Commands.getInstance().COMANDO_DIREITA + n.getValue();
+                    } else if (Integer.valueOf(n.getType()) == opt_add_node_left) { //esquerda
+                        res = res + Commands.getInstance().COMANDO_ESQUERDA + n.getValue();
+                    } else if (Integer.valueOf(n.getType()) == opt_add_node_stop) { //stop
+                        res = res + Commands.getInstance().COMANDO_PARE + n.getValue();
+                    } else if (Integer.valueOf(n.getType()) == opt_add_node_start) { //start
+                        res = res + Commands.getInstance().COMANDO_START + n.getValue();
+                    } else if (Integer.valueOf(n.getType()) == opt_add_node_finish) { //chegada
+                        res = res + Commands.getInstance().COMANDO_END + n.getValue();
                     }
                 }
-
             }
-            Toast.makeText(this.mContext, res, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.context, res, Toast.LENGTH_SHORT).show();
             System.out.println(res);
 
-            if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
-                BluetoothManager.getBluetoothManager(mContext).write(res, mContext);
-            } else {
-                Toast.makeText(this.mContext, "Sem uma conexão bluetooth não é possível executar", Toast.LENGTH_LONG).show();
-            }
-
-
+            BluetoothManager.validate_connection(this.context, true);
             return obj;
         } catch (Throwable t) {
-            Toast.makeText(mContext, "Erro: " + data, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Erro: " + data, Toast.LENGTH_SHORT).show();
         }
 
         return null;
     }
 
-
     public void get_graph_js(String data) {
-        Toast.makeText(mContext, "Cheguei 2", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Cheguei 2", Toast.LENGTH_LONG).show();
         this.data = data;
     }
 
     public void delete_graph_js() {
         webview.loadUrl("javascript:delete_graph_js();");
     }
-
-
 }

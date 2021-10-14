@@ -4,7 +4,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -12,19 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import br.escolaprogramacao.robotmaker.bluetooth.BluetoothManager;
-import br.escolaprogramacao.robotmaker.bluetooth.interfaces.HungriaBluetoothInterface;
-import br.escolaprogramacao.robotmaker.maps.MapAdapter;
-import br.escolaprogramacao.robotmaker.maps.MapItemView;
+import br.escolaprogramacao.robotmaker.bluetooth.interfaces.HungriaBluetoothListenInterface;
+import br.escolaprogramacao.robotmaker.maps.MapAdapterHungria;
+import br.escolaprogramacao.robotmaker.maps.MapItemViewHungria;
 
 
 public class AtHungriaActivity extends AppCompatActivity {
-
-    float margem_superior = 150;
-    float margem_inferior = 150;
-    float margem_direita = 100;
-    float margem_esquerda = 100;
-    public Button teste;
-
     private MenuItem miSettings ;
     private MenuItem miSave ;
     private MenuItem miLoad ;
@@ -33,20 +25,8 @@ public class AtHungriaActivity extends AppCompatActivity {
     private MenuItem miDebug ;
     private MenuItem miBluetooth ;
 
-    private HungriaBluetoothInterface bluetooth_interface;
-
+    private HungriaBluetoothListenInterface bluetooth_interface;
     private GridView gridView;
-    private static final String[] numbers = new String[]{
-            "C", "T", "Q", "C", "Q", "C", "Q", "Q",
-            "Q", "T", "E", "E", "C", "E", "Q", "T",
-            "E", "Q", "C", "T", "T", "T", "E", "C",
-            "C", "T", "T", "E", "Q", "C", "T", "T",
-            "E", "T", "Q", "E", "C", "E", "Q", "C",
-            "T", "E", "C", "C", "T", "E", "E", "Q",
-            "Q", "E", "T", "E", "Q", "C", "C", "T",
-            "C", "E", "Q", "C", "T", "Q", "E", "Q"};
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,24 +35,23 @@ public class AtHungriaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         gridView = (GridView) findViewById(R.id.gv_map_hungria_activity);
-
         gridView.post(new Runnable() {
             @Override
             public void run() {
                 int grid_height = gridView.getMeasuredHeight();
                 int grid_width =  gridView.getMeasuredWidth();
-                final MapAdapter adapter = new MapAdapter(numbers, AtHungriaActivity.this, grid_width, grid_height);
+                final MapAdapterHungria adapter = new MapAdapterHungria( AtHungriaActivity.this, grid_width, grid_height);
                 gridView.setAdapter(adapter);
                 gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                        ((MapItemView) v).display(true);
+                        ((MapItemViewHungria) v).display(true);
                     }
                 });
             }
         });
 
-        bluetooth_interface = new HungriaBluetoothInterface(this, gridView);
+        bluetooth_interface = new HungriaBluetoothListenInterface(this, gridView);
     }
 
     public View getViewByPosition(int pos, GridView listView) {
@@ -121,9 +100,9 @@ public class AtHungriaActivity extends AppCompatActivity {
                 int qnt_target = 0;
                 int qnt_source = 0;
                 for (int i = 0; i < 64; i++) {
-                    if (((MapItemView) getViewByPosition(i , gridView)).status == 1)
+                    if (((MapItemViewHungria) getViewByPosition(i , gridView)).status == 1)
                         qnt_target++;
-                    if (((MapItemView) getViewByPosition(i , gridView)).status == 2)
+                    if (((MapItemViewHungria) getViewByPosition(i , gridView)).status == 2)
                         qnt_source++;
                 }
 

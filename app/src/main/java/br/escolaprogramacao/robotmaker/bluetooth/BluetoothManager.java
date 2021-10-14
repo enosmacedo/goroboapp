@@ -1,5 +1,6 @@
 package br.escolaprogramacao.robotmaker.bluetooth;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -48,7 +49,7 @@ public  class BluetoothManager {
     private static int counter;
     private static volatile boolean stopWorker;
 
-    private BluetoothManager(final Context c) {
+    private BluetoothManager() {
         BA = BluetoothAdapter.getDefaultAdapter();
     }
 
@@ -117,13 +118,13 @@ public  class BluetoothManager {
         }
     }
 
-    public BluetoothAdapter getBA() {
-        return BA;
-    }
+//    public BluetoothAdapter getBA() {
+//        return BA;
+//    }
 
     public static BluetoothManager getBluetoothManager(Context c) {
         if (instance == null) {
-            instance = new BluetoothManager(c);
+            instance = new BluetoothManager();
             return instance;
         } else  {
             return instance;
@@ -138,9 +139,7 @@ public  class BluetoothManager {
         }
     }
 
-
     private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
-
         return  device.createRfcommSocketToServiceRecord(UUID.fromString(myUUID));
         //creates secure outgoing connecetion with BT device using UUID
     }
@@ -150,6 +149,9 @@ public  class BluetoothManager {
     }
 
     public static void beginListenForData(final BluetoothListenInterface func) {
+        if (workerThread != null && workerThread.isAlive()) {
+            workerThread.interrupt();
+        }
         final Handler handler = new Handler();
         final byte delimiter = 10; //This is the ASCII code for a newline character
 
@@ -190,7 +192,17 @@ public  class BluetoothManager {
                 }
             }
         });
-
         workerThread.start();
+    }
+
+    public static boolean validate_connection(Context context, boolean enable_aler) {
+        if (BluetoothManager.getSocket() != null && BluetoothManager.getSocket().isConnected()) {
+            return true;
+        } else {
+            if (enable_aler) {
+                Toast.makeText(context, "É necessário se conectar via BLuetooth inicialmente", Toast.LENGTH_SHORT).show();
+            }
+            return false;
+        }
     }
 }
